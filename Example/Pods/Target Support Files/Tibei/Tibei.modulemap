@@ -1,0 +1,6 @@
+framework module Tibei {
+  umbrella header "Tibei-umbrella.h"
+
+  export *
+  module * { export * }
+}

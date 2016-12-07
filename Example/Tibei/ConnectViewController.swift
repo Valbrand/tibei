@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConnectViewController: UIViewController {
 
+    @IBOutlet weak var messageContentTextField: UITextField!
+    @IBOutlet weak var sendMessageButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,5 +23,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func sendMessageButtonTapped(_ sender: Any) {
+        
+    }
 }
 
