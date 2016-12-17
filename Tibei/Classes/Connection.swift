@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, StreamDelegate {
+public class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, StreamDelegate {
     let outwardMessagesQueue: OperationQueue = OperationQueue()
     
     var input: InputStream
@@ -72,7 +72,13 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
     
     @objc private func sendKeepAliveMessage() throws {
         do {
-            try self.output.writeMessage(KeepAliveMessage())
+            self.outwardMessagesQueue.addOperation {
+                do {
+                    try self.output.writeMessage(KeepAliveMessage())
+                } catch {
+                    self.delegate?.connection(self, raisedError: error)
+                }
+            }
         }
     }
     
@@ -84,7 +90,7 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
     // As opposed to the rest of the project, this method is inside the class definition instead
     // of inside an extension because otherwise, an @nonobjc attribute would be needed
     
-    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+    public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case Stream.Event.errorOccurred:
             self.stopKeepAliveRoutine()
@@ -99,13 +105,16 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
             self.isReady = inputIsOpen && outputIsOpen
             
             if !wasReady && self.isReady {
+                self.startKeepAliveRoutine()
                 self.delegate?.connectionOpened(self)
             }
         case Stream.Event.hasBytesAvailable:
             do {
-                let message: MessageFactory.Message = try MessageFactory.fromInput(self.input)
+                let incomingData: IncomingMessageData<MessageFactory.Message> = try MessageFactory.fromInput(self.input)
                 
-                self.delegate?.connection(self, receivedMessage: message)
+                if case .message(let message) = incomingData {
+                    self.delegate?.connection(self, receivedMessage: message)
+                }
             } catch {
                 self.stopKeepAliveRoutine()
                 self.delegate?.connection(self, raisedError: error)

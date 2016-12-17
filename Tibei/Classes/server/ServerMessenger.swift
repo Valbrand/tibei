@@ -8,14 +8,14 @@
 
 import Foundation
 
-class ServerMessenger<MessageFactory: JSONConvertibleMessageFactory> {
+public class ServerMessenger<MessageFactory: JSONConvertibleMessageFactory> {
     var idleConnections: Set<Connection<MessageFactory>> = Set<Connection<MessageFactory>>()
     
-    var delegate: ServerMessengerDelegate<MessageFactory>?
+    public var delegate: ServerMessengerDelegate<MessageFactory>?
     
     var gameControllerServer: GameControllerServer<MessageFactory>!
     
-    init() {
+    public init() {
         self.gameControllerServer = GameControllerServer<MessageFactory>(messenger: self)
         
         self.gameControllerServer.publishService()
@@ -33,7 +33,7 @@ class ServerMessenger<MessageFactory: JSONConvertibleMessageFactory> {
 // MARK: - ConnectionDelegate protocol
 extension ServerMessenger: ConnectionDelegateProtocol {
     func connection(_ connection: Connection<MessageFactory>, hasEndedWithErrors: Bool) {
-        print("Connection \(connection) ended \(hasEndedWithErrors ? "gracefully" : "with errors")")
+        print("Connection \(connection) ended \(hasEndedWithErrors ? "with errors" : "gracefully")")
         
         self.idleConnections.remove(connection)
         self.delegate?.messenger(self, didLoseConnection: connection)

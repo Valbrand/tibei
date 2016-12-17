@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol JSONConvertibleMessage {
-    init(jsonObject:[String:Any])
+public protocol JSONConvertibleMessage {
+    init?(jsonObject:[String:Any])
     
     func toJSONObject() -> [String:Any]
 }

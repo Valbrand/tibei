@@ -11,10 +11,15 @@ import Tibei
 
 class ServerViewController: UIViewController {
 
+    @IBOutlet weak var incomingMessageLabel: UILabel!
+    
+    let server = ServerMessenger<MessageFactory>()
+    var connection = Set<Connection<MessageFactory>>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        server.delegate = ServerMessengerDelegate(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,4 +38,24 @@ class ServerViewController: UIViewController {
     }
     */
 
+}
+
+extension ServerViewController: ServerMessengerDelegateProtocol {
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: Message, fromConnection connection: Connection<MessageFactory>) {
+        let labelContent = NSMutableAttributedString(string: "\(message.sender): \(message.content)")
+        
+        labelContent.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleDouble.rawValue, range: NSMakeRange(0, message.sender.characters.count + 1))
+        
+        DispatchQueue.main.async {
+            self.incomingMessageLabel.attributedText = labelContent
+        }
+    }
+    
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnection connection: Connection<MessageFactory>) {
+        self.connection.remove(connection)
+    }
+    
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnection connection: Connection<MessageFactory>) {
+        self.connection.insert(connection)
+    }
 }

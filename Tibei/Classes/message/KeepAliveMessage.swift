@@ -9,13 +9,27 @@
 import Foundation
 
 struct KeepAliveMessage: JSONConvertibleMessage {
+    static let keepAliveField: String = "_keepAlive"
+    
+    var hasMoreData: Bool = false
+    
     init() { }
     
-    init(jsonObject: [String : Any]) { }
+    init?(jsonObject: [String : Any]) {
+        let isKeepAliveMessage: Bool = jsonObject[KeepAliveMessage.keepAliveField] as? Bool ?? false
+        
+        if isKeepAliveMessage {
+            if jsonObject.count > 1 {
+                self.hasMoreData = true
+            }
+        } else {
+            return nil
+        }
+    }
     
     func toJSONObject() -> [String : Any] {
         return [
-            "_keepAlive": true
+            KeepAliveMessage.keepAliveField: true
         ]
     }
 }

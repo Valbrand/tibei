@@ -114,6 +114,7 @@
 		E81E7E297E40035819231C0B2B473073 /* World.h in Headers */ = {isa = PBXBuildFile; fileRef = 4606F71071333AEDF06D8E31389AECC9 /* World.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EBA52C16F42E42A1824D87C284F4A60C /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B5EB32452EE8123EA3E65FDC81622 /* PostNotification.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F180B70DEB567617A1145DC66E7A5D4E /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BEFCA54D25BED3A87F8A8BC72FDE02 /* ExampleMetadata.swift */; };
+		F38DEC7F1E05954C00C6CF7D /* IncomingMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DEC7D1E0594FD00C6CF7D /* IncomingMessageData.swift */; };
 		F39B70CF1DF85223002274F4 /* JSONConvertibleMessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B70CD1DF8520E002274F4 /* JSONConvertibleMessageFactory.swift */; };
 		F39B70D11DF8569D002274F4 /* KeepAliveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B70D01DF8569D002274F4 /* KeepAliveMessage.swift */; };
 		F3F081DB1DF84899004BCDB6 /* JSONConvertibleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F081DA1DF84899004BCDB6 /* JSONConvertibleMessage.swift */; };
@@ -302,6 +303,7 @@
 		EFF3000058DB9A1534CF1526128CA5E4 /* Pods-Tibei_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tibei_Example-resources.sh"; sourceTree = "<group>"; };
 		F26BA5A6FE4D418C4B347B819197FA63 /* NimbleEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleEnvironment.swift; path = Sources/Nimble/Adapters/NimbleEnvironment.swift; sourceTree = "<group>"; };
 		F2F54711B380CFE23B29ACEF631A3929 /* Stringers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stringers.swift; path = Sources/Nimble/Utils/Stringers.swift; sourceTree = "<group>"; };
+		F38DEC7D1E0594FD00C6CF7D /* IncomingMessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingMessageData.swift; sourceTree = "<group>"; };
 		F39B70CD1DF8520E002274F4 /* JSONConvertibleMessageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConvertibleMessageFactory.swift; sourceTree = "<group>"; };
 		F39B70D01DF8569D002274F4 /* KeepAliveMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepAliveMessage.swift; sourceTree = "<group>"; };
 		F3DC9FAE16E2DD68869AF1B29FA0A42A /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				F3F081DA1DF84899004BCDB6 /* JSONConvertibleMessage.swift */,
 				F39B70CD1DF8520E002274F4 /* JSONConvertibleMessageFactory.swift */,
 				F39B70D01DF8569D002274F4 /* KeepAliveMessage.swift */,
+				F38DEC7D1E0594FD00C6CF7D /* IncomingMessageData.swift */,
 			);
 			path = message;
 			sourceTree = "<group>";
@@ -979,6 +982,7 @@
 				F39B70D11DF8569D002274F4 /* KeepAliveMessage.swift in Sources */,
 				412CC70E068844DF3F994BF4B2836220 /* ConnectionDelegate.swift in Sources */,
 				6AE0394CAF18E275ACE21E122F06252C /* ConnectionError.swift in Sources */,
+				F38DEC7F1E05954C00C6CF7D /* IncomingMessageData.swift in Sources */,
 				AC91CA5662594C510F276226EE1CBF36 /* GameControllerServer.swift in Sources */,
 				7DCAA0A0E9720931594AB20197A764F5 /* GameControllerServiceBrowser.swift in Sources */,
 				C7C9F894EE3911E68A644C534984BA5C /* GameControllerServiceBrowserDelegate.swift in Sources */,

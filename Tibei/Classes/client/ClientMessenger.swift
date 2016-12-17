@@ -8,37 +8,35 @@
 
 import UIKit
 
-class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory>: NSObject {
+public class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory> {
     var services: [String:NetService] = [:]
     var isReady: Bool = false
     
     var connection: Connection<MessageFactory>?
     var serviceBrowser: GameControllerServiceBrowser
-    var delegate: ClientMessengerDelegate<MessageFactory>?
+    public var delegate: ClientMessengerDelegate<MessageFactory>?
     
-    override init() {
+    public init() {
         self.serviceBrowser = GameControllerServiceBrowser()
-        
-        super.init()
         
         self.serviceBrowser.delegate = self
     }
     
-    func browseForServices() {
+    public func browseForServices() {
         if self.serviceBrowser.isBrowsing {
             if !self.services.isEmpty {
                 self.delegate?.messenger(self, didUpdateServices: Array(self.services.keys))
             }
-        } else {
-            self.serviceBrowser.startBrowsing()
         }
+        
+        self.serviceBrowser.startBrowsing()
     }
     
-    func stopBrowsingForServices() {
+    public func stopBrowsingForServices() {
         self.serviceBrowser.stopBrowsing()
     }
     
-    func connect(serviceName: String) throws {
+    public func connect(serviceName: String) throws {
         guard let service = self.services[serviceName] else {
             throw ConnectionError.inexistentService
         }
@@ -57,7 +55,7 @@ class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory>: NSObject {
         newConnection.open()
     }
     
-    func disconnect() {
+    public func disconnect() {
         self.isReady = false
         
         self.connection?.close()
@@ -66,7 +64,7 @@ class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory>: NSObject {
         self.delegate?.messengerDisconnected(self)
     }
     
-    func sendMessage(_ message: MessageFactory.Message) throws {
+    public func sendMessage(_ message: MessageFactory.Message) throws {
         guard self.isReady else {
             throw ConnectionError.notConnected
         }

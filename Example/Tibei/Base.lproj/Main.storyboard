@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yZp-YU-ZEb">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -69,8 +69,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84B-X6-ah4">
-                                <rect key="frame" x="142" y="307" width="36" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84B-X6-ah4">
+                                <rect key="frame" x="142" y="231" width="36" height="30"/>
                                 <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="sendMessageButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9so-y3-ZLB"/>
@@ -82,7 +82,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="Bby-ig-L5P" secondAttribute="leading" id="2y6-sw-9nO"/>
                             <constraint firstItem="84B-X6-ah4" firstAttribute="centerX" secondItem="Bby-ig-L5P" secondAttribute="centerX" id="6t5-ar-Rsk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bby-ig-L5P" secondAttribute="trailing" id="8Jw-pE-UiM"/>
-                            <constraint firstItem="84B-X6-ah4" firstAttribute="top" secondItem="Bby-ig-L5P" secondAttribute="bottom" constant="8" id="CEA-nC-1RB"/>
+                            <constraint firstItem="84B-X6-ah4" firstAttribute="bottom" secondItem="Bby-ig-L5P" secondAttribute="top" constant="-8" id="CEA-nC-1RB"/>
                             <constraint firstItem="Bby-ig-L5P" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="yFF-f6-DAZ"/>
                         </constraints>
                     </view>
@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="840" y="-137"/>
         </scene>
-        <!--View Controller-->
+        <!--Server View Controller-->
         <scene sceneID="cZ5-b7-7WZ">
             <objects>
-                <viewController id="1oq-A3-0z7" sceneMemberID="viewController">
+                <viewController id="1oq-A3-0z7" customClass="ServerViewController" customModule="Tibei_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sy0-Th-0CM"/>
                         <viewControllerLayoutGuide type="bottom" id="se7-Tb-rqA"/>
@@ -122,6 +122,9 @@
                             <constraint firstItem="zAH-rK-XiV" firstAttribute="centerY" secondItem="nhC-K6-6gH" secondAttribute="centerY" id="Zye-Em-Tuy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="incomingMessageLabel" destination="zAH-rK-XiV" id="Kfu-Kf-eiU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E27-Zd-Nfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
