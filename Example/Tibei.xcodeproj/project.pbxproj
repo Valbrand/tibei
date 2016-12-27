@@ -16,9 +16,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		791B3D7C656A5321206407E7 /* Pods_Tibei_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E82B1D86AF3722801E5910D /* Pods_Tibei_Example.framework */; };
 		F328DE621DF8BE2300123B3B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328DE611DF8BE2300123B3B /* Message.swift */; };
-		F342BD801DFA434F00DA84A5 /* MessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F342BD7F1DFA434F00DA84A5 /* MessageFactory.swift */; };
 		F3947C141E12E46100E05F81 /* TestMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3947C131E12E46100E05F81 /* TestMessage.swift */; };
-		F3947C161E12E55C00E05F81 /* TestMessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3947C151E12E55C00E05F81 /* TestMessageFactory.swift */; };
 		F3F081D71DF83854004BCDB6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F081D61DF83854004BCDB6 /* HomeViewController.swift */; };
 		F3F081D91DF83AB8004BCDB6 /* ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F081D81DF83AB8004BCDB6 /* ServerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -53,9 +51,7 @@
 		9E82B1D86AF3722801E5910D /* Pods_Tibei_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tibei_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E35EE05F2F1CE890F6D0EC /* Pods-Tibei_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tibei_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tibei_Example/Pods-Tibei_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F328DE611DF8BE2300123B3B /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		F342BD7F1DFA434F00DA84A5 /* MessageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFactory.swift; sourceTree = "<group>"; };
 		F3947C131E12E46100E05F81 /* TestMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMessage.swift; sourceTree = "<group>"; };
-		F3947C151E12E55C00E05F81 /* TestMessageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMessageFactory.swift; sourceTree = "<group>"; };
 		F3F081D61DF83854004BCDB6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F3F081D81DF83AB8004BCDB6 /* ServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerViewController.swift; sourceTree = "<group>"; };
 		FA0AECF9A2453BB0BB4082AE /* Tibei.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Tibei.podspec; path = ../Tibei.podspec; sourceTree = "<group>"; };
@@ -114,7 +110,6 @@
 				F3F081D61DF83854004BCDB6 /* HomeViewController.swift */,
 				F3F081D81DF83AB8004BCDB6 /* ServerViewController.swift */,
 				F328DE611DF8BE2300123B3B /* Message.swift */,
-				F342BD7F1DFA434F00DA84A5 /* MessageFactory.swift */,
 			);
 			name = "Tibei Example iOS";
 			path = Tibei;
@@ -134,7 +129,6 @@
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				F3947C131E12E46100E05F81 /* TestMessage.swift */,
-				F3947C151E12E55C00E05F81 /* TestMessageFactory.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -381,7 +375,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F342BD801DFA434F00DA84A5 /* MessageFactory.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ConnectViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				F328DE621DF8BE2300123B3B /* Message.swift in Sources */,
@@ -394,7 +387,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3947C161E12E55C00E05F81 /* TestMessageFactory.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				F3947C141E12E46100E05F81 /* TestMessage.swift in Sources */,
 			);

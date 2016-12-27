@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory> {
+public class ClientMessenger<Message: JSONConvertibleMessage> {
     var services: [String:NetService] = [:]
     var isReady: Bool = false
     
-    var connection: Connection<MessageFactory>?
+    var connection: Connection<Message>?
     var serviceBrowser: GameControllerServiceBrowser
-    public var delegate: ClientMessengerDelegate<MessageFactory>?
+    public var delegate: ClientMessengerDelegate<Message>?
     
     public init() {
         self.serviceBrowser = GameControllerServiceBrowser()
@@ -49,7 +49,7 @@ public class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory> {
             throw ConnectionError.connectionFailure
         }
         
-        let newConnection = Connection<MessageFactory>(input: inputStream!, output: outputStream!)
+        let newConnection = Connection<Message>(input: inputStream!, output: outputStream!)
         self.connection = newConnection
         newConnection.delegate = ConnectionDelegate(self)
         newConnection.open()
@@ -64,7 +64,7 @@ public class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory> {
         self.delegate?.messengerDisconnected(self)
     }
     
-    public func sendMessage(_ message: MessageFactory.Message) throws {
+    public func sendMessage(_ message: Message) throws {
         guard self.isReady else {
             throw ConnectionError.notConnected
         }
@@ -101,19 +101,19 @@ extension ClientMessenger: GameControllerServiceBrowserDelegate {
 // MARK: - ConnectionDelegate protocol
 
 extension ClientMessenger: ConnectionDelegateProtocol {
-    func connection(_ connection: Connection<MessageFactory>, hasEndedWithErrors: Bool) {
+    func connection(_ connection: Connection<Message>, hasEndedWithErrors: Bool) {
         self.disconnect()
     }
     
-    func connection(_ connection: Connection<MessageFactory>, raisedError error: Error) {
+    func connection(_ connection: Connection<Message>, raisedError error: Error) {
         self.disconnect()
     }
     
-    func connection(_ connection: Connection<MessageFactory>, receivedMessage message: MessageFactory.Message) {
+    func connection(_ connection: Connection<Message>, receivedMessage message: Message) {
         self.delegate?.messenger(self, didReceiveMessage: message)
     }
     
-    func connectionOpened(_ connection: Connection<MessageFactory>) {
+    func connectionOpened(_ connection: Connection<Message>) {
         self.isReady = true
         self.delegate?.messengerConnected(self)
     }

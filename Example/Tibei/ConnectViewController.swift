@@ -14,7 +14,7 @@ class ConnectViewController: UIViewController {
     @IBOutlet weak var messageContentTextField: UITextField!
     @IBOutlet weak var sendMessageButton: UIButton!
     
-    let client = ClientMessenger<MessageFactory>()
+    let client = ClientMessenger<Message>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,19 +48,19 @@ class ConnectViewController: UIViewController {
 }
 
 extension ConnectViewController: ClientMessengerDelegateProtocol {
-    func messengerConnected(_ messenger: ClientMessenger<MessageFactory>) {
+    func messengerConnected(_ messenger: ClientMessenger<Message>) {
         self.sendMessageButton.isEnabled = true
     }
     
-    func messengerDisconnected(_ messenger: ClientMessenger<MessageFactory>) {
+    func messengerDisconnected(_ messenger: ClientMessenger<Message>) {
         
     }
     
-    func messenger(_ messenger: ClientMessenger<MessageFactory>, didReceiveMessage message: Message) {
+    func messenger(_ messenger: ClientMessenger<Message>, didReceiveMessage message: Message) {
         
     }
     
-    func messenger(_ messenger: ClientMessenger<MessageFactory>, didUpdateServices services: [String]) {
+    func messenger(_ messenger: ClientMessenger<Message>, didUpdateServices services: [String]) {
         do {
             try self.client.connect(serviceName: services.first!)
         } catch {

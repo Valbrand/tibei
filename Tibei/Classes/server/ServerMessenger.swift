@@ -8,27 +8,27 @@
 
 import Foundation
 
-public class ServerMessenger<MessageFactory: JSONConvertibleMessageFactory> {
-    var connections: [ConnectionID: Connection<MessageFactory>] = [:]
+public class ServerMessenger<Message: JSONConvertibleMessage> {
+    var connections: [ConnectionID: Connection<Message>] = [:]
     
-    public var delegate: ServerMessengerDelegate<MessageFactory>?
+    public var delegate: ServerMessengerDelegate<Message>?
     
-    var gameControllerServer: GameControllerServer<MessageFactory>!
+    var gameControllerServer: GameControllerServer<Message>!
     
     public init() {
-        self.gameControllerServer = GameControllerServer<MessageFactory>(messenger: self)
+        self.gameControllerServer = GameControllerServer<Message>(messenger: self)
         
         self.gameControllerServer.publishService()
     }
     
-    func addConnection(_ connection: Connection<MessageFactory>) {
+    func addConnection(_ connection: Connection<Message>) {
         connection.delegate = ConnectionDelegate(self)
         
         self.connections[connection.identifier] = connection
         connection.open()
     }
     
-    public func sendMessage(_ message: MessageFactory.Message, toConnectionWithID connectionID: ConnectionID) throws {
+    public func sendMessage(_ message: Message, toConnectionWithID connectionID: ConnectionID) throws {
         guard let connection = self.connections[connectionID] else {
             return
         }
@@ -40,19 +40,19 @@ public class ServerMessenger<MessageFactory: JSONConvertibleMessageFactory> {
 
 // MARK: - ConnectionDelegate protocol
 extension ServerMessenger: ConnectionDelegateProtocol {
-    func connection(_ connection: Connection<MessageFactory>, hasEndedWithErrors: Bool) {
+    func connection(_ connection: Connection<Message>, hasEndedWithErrors: Bool) {
         self.delegate?.messenger(self, didLoseConnectionWithID: connection.identifier)
     }
     
-    func connection(_ connection: Connection<MessageFactory>, receivedMessage: MessageFactory.Message) {
+    func connection(_ connection: Connection<Message>, receivedMessage: Message) {
         self.delegate?.messenger(self, didReceiveMessage: receivedMessage, fromConnectionWithID: connection.identifier)
     }
     
-    func connection(_ connection: Connection<MessageFactory>, raisedError: Error) {
+    func connection(_ connection: Connection<Message>, raisedError: Error) {
         self.delegate?.messenger(self, didLoseConnectionWithID: connection.identifier)
     }
     
-    func connectionOpened(_ connection: Connection<MessageFactory>) {
+    func connectionOpened(_ connection: Connection<Message>) {
         self.delegate?.messenger(self, didAcceptConnectionWithID: connection.identifier)
     }
 }

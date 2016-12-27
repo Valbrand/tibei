@@ -9,77 +9,77 @@
 import Foundation
 
 public protocol ClientMessengerDelegateProtocol {
-    associatedtype MessageFactory: JSONConvertibleMessageFactory
+    associatedtype Message: JSONConvertibleMessage
     
-    func messenger(_ messenger: ClientMessenger<MessageFactory>, didUpdateServices services: [String])
-    func messenger(_ messenger: ClientMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message)
-    func messengerConnected(_ messenger: ClientMessenger<MessageFactory>)
-    func messengerDisconnected(_ messenger: ClientMessenger<MessageFactory>)
+    func messenger(_ messenger: ClientMessenger<Message>, didUpdateServices services: [String])
+    func messenger(_ messenger: ClientMessenger<Message>, didReceiveMessage message: Message)
+    func messengerConnected(_ messenger: ClientMessenger<Message>)
+    func messengerDisconnected(_ messenger: ClientMessenger<Message>)
 }
 
-fileprivate class AbstractClientMessengerDelegate<MessageFactory: JSONConvertibleMessageFactory>: ClientMessengerDelegateProtocol {
-    func messenger(_ messenger: ClientMessenger<MessageFactory>, didUpdateServices services: [String]) {
+fileprivate class AbstractClientMessengerDelegate<Message: JSONConvertibleMessage>: ClientMessengerDelegateProtocol {
+    func messenger(_ messenger: ClientMessenger<Message>, didUpdateServices services: [String]) {
         fatalError()
     }
     
-    func messenger(_ messenger: ClientMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message) {
+    func messenger(_ messenger: ClientMessenger<Message>, didReceiveMessage message: Message) {
         fatalError()
     }
     
-    func messengerConnected(_ messenger: ClientMessenger<MessageFactory>) {
+    func messengerConnected(_ messenger: ClientMessenger<Message>) {
         fatalError()
     }
     
-    func messengerDisconnected(_ messenger: ClientMessenger<MessageFactory>) {
+    func messengerDisconnected(_ messenger: ClientMessenger<Message>) {
         fatalError()
     }
 }
 
-fileprivate class ClientMessengerDelegateWrapper<CMDP: ClientMessengerDelegateProtocol>: AbstractClientMessengerDelegate<CMDP.MessageFactory> {
+fileprivate class ClientMessengerDelegateWrapper<CMDP: ClientMessengerDelegateProtocol>: AbstractClientMessengerDelegate<CMDP.Message> {
     let base: CMDP
-    typealias MessageFactory = CMDP.MessageFactory
+    typealias Message = CMDP.Message
     
     init(_ base: CMDP) {
         self.base = base
     }
     
-    override func messenger(_ messenger: ClientMessenger<MessageFactory>, didUpdateServices services: [String]) {
+    override func messenger(_ messenger: ClientMessenger<Message>, didUpdateServices services: [String]) {
         self.base.messenger(messenger, didUpdateServices: services)
     }
     
-    override func messenger(_ messenger: ClientMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message) {
+    override func messenger(_ messenger: ClientMessenger<Message>, didReceiveMessage message: Message) {
         self.base.messenger(messenger, didReceiveMessage: message)
     }
     
-    override func messengerConnected(_ messenger: ClientMessenger<MessageFactory>) {
+    override func messengerConnected(_ messenger: ClientMessenger<Message>) {
         self.base.messengerConnected(messenger)
     }
     
-    override func messengerDisconnected(_ messenger: ClientMessenger<MessageFactory>) {
+    override func messengerDisconnected(_ messenger: ClientMessenger<Message>) {
         self.base.messengerDisconnected(messenger)
     }
 }
 
-public final class ClientMessengerDelegate<MessageFactory: JSONConvertibleMessageFactory>: ClientMessengerDelegateProtocol {
-    private let delegateImplementation: AbstractClientMessengerDelegate<MessageFactory>
+public final class ClientMessengerDelegate<Message: JSONConvertibleMessage>: ClientMessengerDelegateProtocol {
+    private let delegateImplementation: AbstractClientMessengerDelegate<Message>
     
-    public init<CMDP: ClientMessengerDelegateProtocol>(_ delegateImplementation: CMDP) where CMDP.MessageFactory == MessageFactory {
+    public init<CMDP: ClientMessengerDelegateProtocol>(_ delegateImplementation: CMDP) where CMDP.Message == Message {
         self.delegateImplementation = ClientMessengerDelegateWrapper(delegateImplementation)
     }
     
-    public func messenger(_ messenger: ClientMessenger<MessageFactory>, didUpdateServices services: [String]) {
+    public func messenger(_ messenger: ClientMessenger<Message>, didUpdateServices services: [String]) {
         self.delegateImplementation.messenger(messenger, didUpdateServices: services)
     }
     
-    public func messenger(_ messenger: ClientMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message) {
+    public func messenger(_ messenger: ClientMessenger<Message>, didReceiveMessage message: Message) {
         self.delegateImplementation.messenger(messenger, didReceiveMessage: message)
     }
     
-    public func messengerConnected(_ messenger: ClientMessenger<MessageFactory>) {
+    public func messengerConnected(_ messenger: ClientMessenger<Message>) {
         self.delegateImplementation.messengerConnected(messenger)
     }
     
-    public func messengerDisconnected(_ messenger: ClientMessenger<MessageFactory>) {
+    public func messengerDisconnected(_ messenger: ClientMessenger<Message>) {
         self.delegateImplementation.messengerDisconnected(messenger)
     }
 }

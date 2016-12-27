@@ -9,64 +9,64 @@
 import Foundation
 
 public protocol ServerMessengerDelegateProtocol {
-    associatedtype MessageFactory: JSONConvertibleMessageFactory
+    associatedtype Message: JSONConvertibleMessage
     
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnectionWithID connectionID: ConnectionID)
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnectionWithID connectionID: ConnectionID)
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnectionWithID connectionID: ConnectionID)
+    func messenger(_ messenger: ServerMessenger<Message>, didReceiveMessage message: Message, fromConnectionWithID connectionID: ConnectionID)
+    func messenger(_ messenger: ServerMessenger<Message>, didAcceptConnectionWithID connectionID: ConnectionID)
+    func messenger(_ messenger: ServerMessenger<Message>, didLoseConnectionWithID connectionID: ConnectionID)
 }
 
-fileprivate class AbstractServerMessengerDelegate<MessageFactory: JSONConvertibleMessageFactory>: ServerMessengerDelegateProtocol {
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnectionWithID connectionID: ConnectionID) {
+fileprivate class AbstractServerMessengerDelegate<Message: JSONConvertibleMessage>: ServerMessengerDelegateProtocol {
+    func messenger(_ messenger: ServerMessenger<Message>, didReceiveMessage message: Message, fromConnectionWithID connectionID: ConnectionID) {
         fatalError()
     }
     
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnectionWithID connectionID: ConnectionID) {
+    func messenger(_ messenger: ServerMessenger<Message>, didAcceptConnectionWithID connectionID: ConnectionID) {
         fatalError()
     }
     
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnectionWithID connectionID: ConnectionID) {
+    func messenger(_ messenger: ServerMessenger<Message>, didLoseConnectionWithID connectionID: ConnectionID) {
         fatalError()
     }
 }
 
-fileprivate class ServerMessengerDelegateWrapper<SMDP: ServerMessengerDelegateProtocol>: AbstractServerMessengerDelegate<SMDP.MessageFactory> {
+fileprivate class ServerMessengerDelegateWrapper<SMDP: ServerMessengerDelegateProtocol>: AbstractServerMessengerDelegate<SMDP.Message> {
     let base: SMDP
-    typealias MessageFactory = SMDP.MessageFactory
+    typealias Message = SMDP.Message
     
     init(_ base: SMDP) {
         self.base = base
     }
     
-    override func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnectionWithID connectionID: ConnectionID) {
+    override func messenger(_ messenger: ServerMessenger<Message>, didReceiveMessage message: Message, fromConnectionWithID connectionID: ConnectionID) {
         self.base.messenger(messenger, didReceiveMessage: message, fromConnectionWithID: connectionID)
     }
     
-    override func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnectionWithID connectionID: ConnectionID) {
+    override func messenger(_ messenger: ServerMessenger<Message>, didAcceptConnectionWithID connectionID: ConnectionID) {
         self.base.messenger(messenger, didAcceptConnectionWithID: connectionID)
     }
     
-    override func messenger(_ messenger: ServerMessenger<SMDP.MessageFactory>, didLoseConnectionWithID connectionID: ConnectionID) {
+    override func messenger(_ messenger: ServerMessenger<SMDP.Message>, didLoseConnectionWithID connectionID: ConnectionID) {
         self.base.messenger(messenger, didLoseConnectionWithID: connectionID)
     }
 }
 
-public final class ServerMessengerDelegate<MessageFactory: JSONConvertibleMessageFactory>: ServerMessengerDelegateProtocol {
-    private let delegateImplementation: AbstractServerMessengerDelegate<MessageFactory>
+public final class ServerMessengerDelegate<Message: JSONConvertibleMessage>: ServerMessengerDelegateProtocol {
+    private let delegateImplementation: AbstractServerMessengerDelegate<Message>
     
-    public init<SMDP: ServerMessengerDelegateProtocol>(_ delegateImplementation: SMDP) where MessageFactory == SMDP.MessageFactory {
+    public init<SMDP: ServerMessengerDelegateProtocol>(_ delegateImplementation: SMDP) where Message == SMDP.Message {
         self.delegateImplementation = ServerMessengerDelegateWrapper(delegateImplementation)
     }
     
-    public func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnectionWithID connectionID: ConnectionID) {
+    public func messenger(_ messenger: ServerMessenger<Message>, didReceiveMessage message: Message, fromConnectionWithID connectionID: ConnectionID) {
         self.delegateImplementation.messenger(messenger, didReceiveMessage: message, fromConnectionWithID: connectionID)
     }
     
-    public func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnectionWithID connectionID: ConnectionID) {
+    public func messenger(_ messenger: ServerMessenger<Message>, didAcceptConnectionWithID connectionID: ConnectionID) {
         self.delegateImplementation.messenger(messenger, didAcceptConnectionWithID: connectionID)
     }
     
-    public func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnectionWithID connectionID: ConnectionID) {
+    public func messenger(_ messenger: ServerMessenger<Message>, didLoseConnectionWithID connectionID: ConnectionID) {
         self.delegateImplementation.messenger(messenger, didLoseConnectionWithID: connectionID)
     }
 }

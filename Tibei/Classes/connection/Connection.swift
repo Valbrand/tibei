@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, StreamDelegate {
+class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelegate {
     let outwardMessagesQueue: OperationQueue = OperationQueue()
     public let identifier: ConnectionID
     
@@ -25,7 +25,7 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
         return self.identifier.id.hashValue
     }
     
-    var delegate: ConnectionDelegate<MessageFactory>?
+    var delegate: ConnectionDelegate<Message>?
     
     init(input: InputStream, output: OutputStream, identifier: ConnectionID? = nil) {
         self.input = input
@@ -57,7 +57,7 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
         stream.close()
     }
     
-    func sendMessage(_ message: MessageFactory.Message) {
+    func sendMessage(_ message: Message) {
         self.outwardMessagesQueue.addOperation {
             do {
                 _ = try self.output.writeMessage(message)
@@ -111,7 +111,7 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
             }
         case Stream.Event.hasBytesAvailable:
             do {
-                let incomingData: IncomingMessageData<MessageFactory.Message> = try MessageFactory.fromInput(self.input)
+                let incomingData: IncomingMessageData<Message> = try Message.fromInput(self.input)
                 
                 if case .message(let message) = incomingData {
                     self.delegate?.connection(self, receivedMessage: message)
