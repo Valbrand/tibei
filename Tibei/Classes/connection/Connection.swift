@@ -8,12 +8,12 @@
 
 import UIKit
 
-public class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, StreamDelegate {
+class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, StreamDelegate {
     let outwardMessagesQueue: OperationQueue = OperationQueue()
+    public let identifier: ConnectionID
     
     var input: InputStream
     var output: OutputStream
-    var identifier: UUID
     var isWriteable: Bool = false {
         didSet {
             self.outwardMessagesQueue.isSuspended = !self.isWriteable
@@ -21,16 +21,19 @@ public class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject
     }
     var isReady: Bool = false
     var pingTimer = Timer()
+    override var hashValue: Int {
+        return self.identifier.id.hashValue
+    }
     
     var delegate: ConnectionDelegate<MessageFactory>?
     
-    init(input: InputStream, output: OutputStream) {
+    init(input: InputStream, output: OutputStream, identifier: ConnectionID? = nil) {
         self.input = input
         self.output = output
         
         self.outwardMessagesQueue.maxConcurrentOperationCount = 1
         self.outwardMessagesQueue.isSuspended = true
-        self.identifier = UUID()
+        self.identifier = identifier ?? ConnectionID()
     }
     
     func open() {
@@ -87,10 +90,8 @@ public class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject
     }
     
     // MARK: - StreamDelegate protocol
-    // As opposed to the rest of the project, this method is inside the class definition instead
-    // of inside an extension because otherwise, an @nonobjc attribute would be needed
     
-    public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case Stream.Event.errorOccurred:
             self.stopKeepAliveRoutine()

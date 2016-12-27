@@ -14,7 +14,6 @@ class ServerViewController: UIViewController {
     @IBOutlet weak var incomingMessageLabel: UILabel!
     
     let server = ServerMessenger<MessageFactory>()
-    var connection = Set<Connection<MessageFactory>>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +40,7 @@ class ServerViewController: UIViewController {
 }
 
 extension ServerViewController: ServerMessengerDelegateProtocol {
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: Message, fromConnection connection: Connection<MessageFactory>) {
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: Message, fromConnectionWithID connectionID: ConnectionID) {
         let labelContent = NSMutableAttributedString(string: "\(message.sender): \(message.content)")
         
         labelContent.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleDouble.rawValue, range: NSMakeRange(0, message.sender.characters.count + 1))
@@ -51,11 +50,11 @@ extension ServerViewController: ServerMessengerDelegateProtocol {
         }
     }
     
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnection connection: Connection<MessageFactory>) {
-        self.connection.remove(connection)
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnectionWithID connectionID: ConnectionID) {
+        
     }
     
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnection connection: Connection<MessageFactory>) {
-        self.connection.insert(connection)
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnectionWithID connectionID: ConnectionID) {
+        
     }
 }

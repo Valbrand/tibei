@@ -11,21 +11,21 @@ import Foundation
 public protocol ServerMessengerDelegateProtocol {
     associatedtype MessageFactory: JSONConvertibleMessageFactory
     
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnection connection: Connection<MessageFactory>)
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnection connection: Connection<MessageFactory>)
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnection connection: Connection<MessageFactory>)
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnectionWithID connectionID: ConnectionID)
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnectionWithID connectionID: ConnectionID)
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnectionWithID connectionID: ConnectionID)
 }
 
 fileprivate class AbstractServerMessengerDelegate<MessageFactory: JSONConvertibleMessageFactory>: ServerMessengerDelegateProtocol {
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnection connection: Connection<MessageFactory>) {
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnectionWithID connectionID: ConnectionID) {
         fatalError()
     }
     
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnection connection: Connection<MessageFactory>) {
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnectionWithID connectionID: ConnectionID) {
         fatalError()
     }
     
-    func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnection connection: Connection<MessageFactory>) {
+    func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnectionWithID connectionID: ConnectionID) {
         fatalError()
     }
 }
@@ -38,16 +38,16 @@ fileprivate class ServerMessengerDelegateWrapper<SMDP: ServerMessengerDelegatePr
         self.base = base
     }
     
-    override func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnection connection: Connection<MessageFactory>) {
-        self.base.messenger(messenger, didReceiveMessage: message, fromConnection: connection)
+    override func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnectionWithID connectionID: ConnectionID) {
+        self.base.messenger(messenger, didReceiveMessage: message, fromConnectionWithID: connectionID)
     }
     
-    override func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnection connection: Connection<MessageFactory>) {
-        self.base.messenger(messenger, didAcceptConnection: connection)
+    override func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnectionWithID connectionID: ConnectionID) {
+        self.base.messenger(messenger, didAcceptConnectionWithID: connectionID)
     }
     
-    override func messenger(_ messenger: ServerMessenger<SMDP.MessageFactory>, didLoseConnection connection: Connection<SMDP.MessageFactory>) {
-        self.base.messenger(messenger, didLoseConnection: connection)
+    override func messenger(_ messenger: ServerMessenger<SMDP.MessageFactory>, didLoseConnectionWithID connectionID: ConnectionID) {
+        self.base.messenger(messenger, didLoseConnectionWithID: connectionID)
     }
 }
 
@@ -58,15 +58,15 @@ public final class ServerMessengerDelegate<MessageFactory: JSONConvertibleMessag
         self.delegateImplementation = ServerMessengerDelegateWrapper(delegateImplementation)
     }
     
-    public func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnection connection: Connection<MessageFactory>) {
-        self.delegateImplementation.messenger(messenger, didReceiveMessage: message, fromConnection: connection)
+    public func messenger(_ messenger: ServerMessenger<MessageFactory>, didReceiveMessage message: MessageFactory.Message, fromConnectionWithID connectionID: ConnectionID) {
+        self.delegateImplementation.messenger(messenger, didReceiveMessage: message, fromConnectionWithID: connectionID)
     }
     
-    public func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnection connection: Connection<MessageFactory>) {
-        self.delegateImplementation.messenger(messenger, didAcceptConnection: connection)
+    public func messenger(_ messenger: ServerMessenger<MessageFactory>, didAcceptConnectionWithID connectionID: ConnectionID) {
+        self.delegateImplementation.messenger(messenger, didAcceptConnectionWithID: connectionID)
     }
     
-    public func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnection connection: Connection<MessageFactory>) {
-        self.delegateImplementation.messenger(messenger, didLoseConnection: connection)
+    public func messenger(_ messenger: ServerMessenger<MessageFactory>, didLoseConnectionWithID connectionID: ConnectionID) {
+        self.delegateImplementation.messenger(messenger, didLoseConnectionWithID: connectionID)
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 public class ServerMessenger<MessageFactory: JSONConvertibleMessageFactory> {
-    var idleConnections: Set<Connection<MessageFactory>> = Set<Connection<MessageFactory>>()
+    var connections: [ConnectionID: Connection<MessageFactory>] = [:]
     
     public var delegate: ServerMessengerDelegate<MessageFactory>?
     
@@ -24,8 +24,16 @@ public class ServerMessenger<MessageFactory: JSONConvertibleMessageFactory> {
     func addConnection(_ connection: Connection<MessageFactory>) {
         connection.delegate = ConnectionDelegate(self)
         
-        self.idleConnections.insert(connection)
+        self.connections[connection.identifier] = connection
         connection.open()
+    }
+    
+    public func sendMessage(_ message: MessageFactory.Message, toConnectionWithID connectionID: ConnectionID) throws {
+        guard let connection = self.connections[connectionID] else {
+            return
+        }
+        
+        connection.sendMessage(message)
     }
     
 }
@@ -33,25 +41,18 @@ public class ServerMessenger<MessageFactory: JSONConvertibleMessageFactory> {
 // MARK: - ConnectionDelegate protocol
 extension ServerMessenger: ConnectionDelegateProtocol {
     func connection(_ connection: Connection<MessageFactory>, hasEndedWithErrors: Bool) {
-        print("Connection \(connection) ended \(hasEndedWithErrors ? "with errors" : "gracefully")")
-        
-        self.idleConnections.remove(connection)
-        self.delegate?.messenger(self, didLoseConnection: connection)
+        self.delegate?.messenger(self, didLoseConnectionWithID: connection.identifier)
     }
     
     func connection(_ connection: Connection<MessageFactory>, receivedMessage: MessageFactory.Message) {
-        self.delegate?.messenger(self, didReceiveMessage: receivedMessage, fromConnection: connection)
+        self.delegate?.messenger(self, didReceiveMessage: receivedMessage, fromConnectionWithID: connection.identifier)
     }
     
     func connection(_ connection: Connection<MessageFactory>, raisedError: Error) {
-        print("Connection \(connection) raised error: \(raisedError)")
-        
-        self.idleConnections.remove(connection)
-        self.delegate?.messenger(self, didLoseConnection: connection)
+        self.delegate?.messenger(self, didLoseConnectionWithID: connection.identifier)
     }
     
     func connectionOpened(_ connection: Connection<MessageFactory>) {
-        self.idleConnections.remove(connection)
-        self.delegate?.messenger(self, didAcceptConnection: connection)
+        self.delegate?.messenger(self, didAcceptConnectionWithID: connection.identifier)
     }
 }
