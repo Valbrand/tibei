@@ -8,11 +8,10 @@
 
 import Foundation
 
-public class ServerMessenger<Message: JSONConvertibleMessage> {
+public class ServerMessenger<Message: JSONConvertibleMessage>: Messenger {
     var connections: [ConnectionID: Connection<Message>] = [:]
     
-    public var delegate: ServerMessengerDelegate<Message>?
-    
+    public var responders: ResponderChain = ResponderChain()
     var gameControllerServer: GameControllerServer<Message>!
     
     public init() {
@@ -41,18 +40,24 @@ public class ServerMessenger<Message: JSONConvertibleMessage> {
 // MARK: - ConnectionDelegate protocol
 extension ServerMessenger: ConnectionDelegateProtocol {
     func connection(_ connection: Connection<Message>, hasEndedWithErrors: Bool) {
-        self.delegate?.messenger(self, didLoseConnectionWithID: connection.identifier)
+        let event = ConnectionLostEvent(connectionID: connection.identifier)
+        
+        self.forwardEventToResponderChain(event: event, fromConnectionWithID: connection.identifier)
     }
     
-    func connection(_ connection: Connection<Message>, receivedMessage: Message) {
-        self.delegate?.messenger(self, didReceiveMessage: receivedMessage, fromConnectionWithID: connection.identifier)
+    func connection(_ connection: Connection<Message>, receivedData data: [String: Any]) {
+        let event = IncomingMessageEvent(message: data, connectionID: connection.identifier)
+        
+        self.forwardEventToResponderChain(event: event, fromConnectionWithID: connection.identifier)
     }
     
     func connection(_ connection: Connection<Message>, raisedError: Error) {
-        self.delegate?.messenger(self, didLoseConnectionWithID: connection.identifier)
+        self.responders.processError(raisedError, fromConnectionWithID: connection.identifier)
     }
     
     func connectionOpened(_ connection: Connection<Message>) {
-        self.delegate?.messenger(self, didAcceptConnectionWithID: connection.identifier)
+        let event = ConnectionAcceptedEvent(connectionID: connection.identifier)
+        
+        self.forwardEventToResponderChain(event: event, fromConnectionWithID: connection.identifier)
     }
 }

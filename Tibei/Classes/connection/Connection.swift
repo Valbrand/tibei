@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelegate {
+public class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelegate {
     let outwardMessagesQueue: OperationQueue = OperationQueue()
     public let identifier: ConnectionID
     
@@ -21,7 +21,7 @@ class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelegate {
     }
     var isReady: Bool = false
     var pingTimer = Timer()
-    override var hashValue: Int {
+    override public var hashValue: Int {
         return self.identifier.id.hashValue
     }
     
@@ -67,6 +67,44 @@ class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelegate {
         }
     }
     
+    func dataFromInput(_ stream: InputStream) throws -> IncomingMessageData<Message> {
+        var lengthInBytes = Array<UInt8>(repeating: 0, count: MemoryLayout<Constants.MessageLength>.size)
+        _ = stream.read(&lengthInBytes, maxLength: lengthInBytes.count)
+        let length: Constants.MessageLength = UnsafePointer(lengthInBytes).withMemoryRebound(to: Constants.MessageLength.self, capacity: 1) {
+            $0.pointee
+        }
+        
+        guard length > 0 else {
+            return .nilMessage
+        }
+        
+        var actualDataBuffer = Array<UInt8>(repeating: 0, count: Int(length))
+        let readBytesCount = stream.read(&actualDataBuffer, maxLength: actualDataBuffer.count)
+        if readBytesCount < 0 {
+            throw ConnectionError.inputError
+        }
+        
+        let payloadData = Data(bytes: actualDataBuffer)
+        
+        do {
+            let payload = try JSONSerialization.jsonObject(with: payloadData, options: []) as! [String:Any]
+            
+            if let messageType = payload[Fields.messageTypeField] as? String, messageType == KeepAliveMessage.type {
+                let keepAliveMessage = self.keepAliveMessage(jsonObject: payload)
+                
+                if !keepAliveMessage.hasMoreData {
+                    return .keepAliveMessage
+                }
+            }
+            
+            return .data(payload)
+        }
+    }
+    
+    func keepAliveMessage(jsonObject: [String: Any]) -> KeepAliveMessage {
+        return KeepAliveMessage(jsonObject: jsonObject)
+    }
+    
     // MARK: - keeping connection alive
     
     func startKeepAliveRoutine() {
@@ -91,7 +129,7 @@ class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelegate {
     
     // MARK: - StreamDelegate protocol
     
-    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+    public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case Stream.Event.errorOccurred:
             self.stopKeepAliveRoutine()
@@ -111,10 +149,10 @@ class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelegate {
             }
         case Stream.Event.hasBytesAvailable:
             do {
-                let incomingData: IncomingMessageData<Message> = try Message.fromInput(self.input)
+                let incomingData: IncomingMessageData<Message> = try self.dataFromInput(self.input)
                 
-                if case .message(let message) = incomingData {
-                    self.delegate?.connection(self, receivedMessage: message)
+                if case .data(let payload) = incomingData {
+                    self.delegate?.connection(self, receivedData: payload)
                 }
             } catch {
                 self.stopKeepAliveRoutine()

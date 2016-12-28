@@ -18,43 +18,53 @@ class ServerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        server.delegate = ServerMessengerDelegate(self)
+        server.registerResponder(self)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-extension ServerViewController: ServerMessengerDelegateProtocol {
-    func messenger(_ messenger: ServerMessenger<Message>, didReceiveMessage message: Message, fromConnectionWithID connectionID: ConnectionID) {
-        let labelContent = NSMutableAttributedString(string: "\(message.sender): \(message.content)")
+extension ServerViewController: ConnectionResponder {
+    var allowedMessages: [JSONConvertibleMessage.Type] {
+        return [Message.self]
+    }
+    
+    func processMessage(_ message: JSONConvertibleMessage, fromConnectionWithID connectionID: ConnectionID) {
+        print(message.toJSONObject())
         
-        labelContent.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleDouble.rawValue, range: NSMakeRange(0, message.sender.characters.count + 1))
+        if let textMessage = message as? Message {
+            let labelContent = NSMutableAttributedString(string: "\(textMessage.sender): \(textMessage.content)")
+            
+            labelContent.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleDouble.rawValue, range: NSMakeRange(0, textMessage.sender.characters.count + 1))
+            
+            DispatchQueue.main.async {
+                self.incomingMessageLabel.attributedText = labelContent
+            }
+        }
+    }
+    
+    func acceptedConnection(withID connectionID: ConnectionID) {
+        let rawContent: String = "New connection with id #\(connectionID.hashValue)"
+        let labelContent = NSMutableAttributedString(string: rawContent)
+        
+        labelContent.addAttribute(NSForegroundColorAttributeName, value: UIColor.purple, range: NSMakeRange(0, rawContent.characters.count))
         
         DispatchQueue.main.async {
             self.incomingMessageLabel.attributedText = labelContent
         }
     }
     
-    func messenger(_ messenger: ServerMessenger<Message>, didLoseConnectionWithID connectionID: ConnectionID) {
+    func lostConnection(withID connectionID: ConnectionID) {
+        let rawContent: String = "Lost connection with id #\(connectionID.hashValue)"
+        let labelContent = NSMutableAttributedString(string: rawContent)
         
+        labelContent.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSMakeRange(0, rawContent.characters.count))
+        
+        DispatchQueue.main.async {
+            self.incomingMessageLabel.attributedText = labelContent
+        }
     }
     
-    func messenger(_ messenger: ServerMessenger<Message>, didAcceptConnectionWithID connectionID: ConnectionID) {
-        
+    func processError(_ error: Error, fromConnectionWithID connectionID: ConnectionID?) {
+        print("Error raised from connection #\(connectionID?.hashValue):")
+        print(error)
     }
 }

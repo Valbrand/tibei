@@ -15,12 +15,8 @@ class TestMessage: JSONConvertibleMessage {
         self.message = message
     }
     
-    required init?(jsonObject: [String : Any]) {
-        guard let message = jsonObject["payload"] as? String else {
-            return nil
-        }
-        
-        self.message = message
+    required init(jsonObject: [String : Any]) {
+        self.message = jsonObject["payload"] as! String
     }
     
     func toJSONObject() -> [String : Any] {

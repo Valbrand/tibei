@@ -12,7 +12,7 @@ protocol ConnectionDelegateProtocol {
     associatedtype Message: JSONConvertibleMessage
     
     func connection(_ connection: Connection<Message>, hasEndedWithErrors: Bool)
-    func connection(_ connection: Connection<Message>, receivedMessage message: Message)
+    func connection(_ connection: Connection<Message>, receivedData data: [String: Any])
     func connection(_ connection: Connection<Message>, raisedError error: Error)
     func connectionOpened(_ connection: Connection<Message>)
 }
@@ -22,7 +22,7 @@ fileprivate class AbstractConnectionDelegate<Message: JSONConvertibleMessage>: C
         fatalError()
     }
     
-    func connection(_ connection: Connection<Message>, receivedMessage message: Message) {
+    func connection(_ connection: Connection<Message>, receivedData data: [String: Any]) {
         fatalError()
     }
     
@@ -47,8 +47,8 @@ fileprivate class ConnectionDelegateWrapper<CDP: ConnectionDelegateProtocol>: Ab
         self.base.connection(connection, hasEndedWithErrors: hasEndedWithErrors)
     }
     
-    override func connection(_ connection: Connection<Message>, receivedMessage message: Message) {
-        self.base.connection(connection, receivedMessage: message)
+    override func connection(_ connection: Connection<Message>, receivedData data: [String: Any]) {
+        self.base.connection(connection, receivedData: data)
     }
     
     override func connection(_ connection: Connection<Message>, raisedError error: Error) {
@@ -71,8 +71,8 @@ final class ConnectionDelegate<Message: JSONConvertibleMessage>: ConnectionDeleg
         self.delegateImplementation.connection(connection, hasEndedWithErrors: hasEndedWithErrors)
     }
     
-    func connection(_ connection: Connection<Message>, receivedMessage message: Message) {
-        self.delegateImplementation.connection(connection, receivedMessage: message)
+    func connection(_ connection: Connection<Message>, receivedData data: [String: Any]) {
+        self.delegateImplementation.connection(connection, receivedData: data)
     }
     
     func connection(_ connection: Connection<Message>, raisedError error: Error) {

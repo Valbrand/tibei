@@ -19,14 +19,9 @@ class ConnectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.client.delegate = ClientMessengerDelegate(self)
+        self.client.registerResponder(self)
         self.client.browseForServices()
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func sendMessageButtonTapped(_ sender: Any) {
@@ -45,28 +40,21 @@ class ConnectViewController: UIViewController {
             }
         }
     }
+    
 }
-
-extension ConnectViewController: ClientMessengerDelegateProtocol {
-    func messengerConnected(_ messenger: ClientMessenger<Message>) {
-        self.sendMessageButton.isEnabled = true
-    }
-    
-    func messengerDisconnected(_ messenger: ClientMessenger<Message>) {
-        
-    }
-    
-    func messenger(_ messenger: ClientMessenger<Message>, didReceiveMessage message: Message) {
-        
-    }
-    
-    func messenger(_ messenger: ClientMessenger<Message>, didUpdateServices services: [String]) {
+ 
+extension ConnectViewController: ClientConnectionResponder {
+    func availableServicesChanged(availableServiceIDs: [String]) {
         do {
-            try self.client.connect(serviceName: services.first!)
+            try self.client.connect(serviceName: availableServiceIDs.first!)
         } catch {
             print("An error occurred while trying to connect")
             print(error)
         }
+    }
+    
+    func acceptedConnection(withID connectionID: ConnectionID) {
+        self.sendMessageButton.isEnabled = true
     }
 }
 

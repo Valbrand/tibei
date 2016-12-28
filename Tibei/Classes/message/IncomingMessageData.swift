@@ -11,5 +11,5 @@ import Foundation
 enum IncomingMessageData<Message: JSONConvertibleMessage> {
     case nilMessage
     case keepAliveMessage
-    case message(Message)
+    case data([String:Any])
 }

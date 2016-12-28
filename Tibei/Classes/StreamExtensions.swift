@@ -11,13 +11,16 @@ import Foundation
 extension OutputStream {
     typealias Length = UInt32
     
-    func writeMessage(_ message: JSONConvertibleMessage) throws -> Int {
+    func writeMessage<Message: JSONConvertibleMessage>(_ message: Message) throws -> Int {
         guard self.hasSpaceAvailable else {
             throw ConnectionError.outputStreamUnavailable
         }
 
         do {
-            let data = try JSONSerialization.data(withJSONObject: message.toJSONObject())
+            var messageJSONPayload: [String: Any] = message.toJSONObject()
+            messageJSONPayload[Fields.messageTypeField] = Message.type
+            
+            let data = try JSONSerialization.data(withJSONObject: messageJSONPayload)
             var payloadLength: Length = Length(data.count)
             
             var dataWithLength = withUnsafePointer(to: &payloadLength) {
