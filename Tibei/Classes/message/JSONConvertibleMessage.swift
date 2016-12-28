@@ -9,7 +9,13 @@
 import Foundation
 
 public protocol JSONConvertibleMessage {
-    init?(jsonObject:[String:Any])
+    init(jsonObject:[String:Any])
     
     func toJSONObject() -> [String:Any]
+}
+
+extension JSONConvertibleMessage {
+    static var type: String {
+        return String(describing: Self.self)
+    }
 }

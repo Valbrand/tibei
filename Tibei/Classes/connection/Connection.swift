@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, StreamDelegate {
+public class Connection: NSObject, StreamDelegate {
     let outwardMessagesQueue: OperationQueue = OperationQueue()
     public let identifier: ConnectionID
     
@@ -21,11 +21,11 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
     }
     var isReady: Bool = false
     var pingTimer = Timer()
-    override var hashValue: Int {
+    override public var hashValue: Int {
         return self.identifier.id.hashValue
     }
     
-    var delegate: ConnectionDelegate<MessageFactory>?
+    var delegate: ConnectionDelegate?
     
     init(input: InputStream, output: OutputStream, identifier: ConnectionID? = nil) {
         self.input = input
@@ -57,7 +57,7 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
         stream.close()
     }
     
-    func sendMessage(_ message: MessageFactory.Message) {
+    func sendMessage<Message: JSONConvertibleMessage>(_ message: Message) {
         self.outwardMessagesQueue.addOperation {
             do {
                 _ = try self.output.writeMessage(message)
@@ -65,6 +65,47 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
                 self.delegate?.connection(self, raisedError: error)
             }
         }
+    }
+    
+    func dataFromInput(_ stream: InputStream) throws -> IncomingData {
+        var lengthInBytes = Array<UInt8>(repeating: 0, count: MemoryLayout<Constants.MessageLength>.size)
+        _ = stream.read(&lengthInBytes, maxLength: lengthInBytes.count)
+        let length: Constants.MessageLength = UnsafePointer(lengthInBytes).withMemoryRebound(to: Constants.MessageLength.self, capacity: 1) {
+            $0.pointee
+        }
+        
+        guard length > 0 else {
+            return .nilMessage
+        }
+        
+        var actualDataBuffer = Array<UInt8>(repeating: 0, count: Int(length))
+        let readBytesCount = stream.read(&actualDataBuffer, maxLength: actualDataBuffer.count)
+        if readBytesCount < 0 {
+            throw ConnectionError.inputError
+        }
+        
+        let payloadData = Data(bytes: actualDataBuffer)
+        
+        do {
+            let payload = try JSONSerialization.jsonObject(with: payloadData, options: []) as! [String:Any]
+            
+            if let messageType = payload[Fields.messageTypeField] as? String, messageType == KeepAliveMessage.type {
+                let keepAliveMessage = self.keepAliveMessage(jsonObject: payload)
+                
+                if !keepAliveMessage.hasMoreData {
+                    return .keepAliveMessage
+                }
+            }
+            
+            print("Received payload:")
+            print(payload)
+            
+            return .data(payload)
+        }
+    }
+    
+    func keepAliveMessage(jsonObject: [String: Any]) -> KeepAliveMessage {
+        return KeepAliveMessage(jsonObject: jsonObject)
     }
     
     // MARK: - keeping connection alive
@@ -91,7 +132,7 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
     
     // MARK: - StreamDelegate protocol
     
-    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+    public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case Stream.Event.errorOccurred:
             self.stopKeepAliveRoutine()
@@ -111,10 +152,10 @@ class Connection<MessageFactory: JSONConvertibleMessageFactory>: NSObject, Strea
             }
         case Stream.Event.hasBytesAvailable:
             do {
-                let incomingData: IncomingMessageData<MessageFactory.Message> = try MessageFactory.fromInput(self.input)
+                let incomingData: IncomingData = try self.dataFromInput(self.input)
                 
-                if case .message(let message) = incomingData {
-                    self.delegate?.connection(self, receivedMessage: message)
+                if case .data(let payload) = incomingData {
+                    self.delegate?.connection(self, receivedData: payload)
                 }
             } catch {
                 self.stopKeepAliveRoutine()

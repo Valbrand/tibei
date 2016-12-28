@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum IncomingMessageData<Message: JSONConvertibleMessage> {
+enum IncomingData {
     case nilMessage
     case keepAliveMessage
-    case message(Message)
+    case data([String:Any])
 }

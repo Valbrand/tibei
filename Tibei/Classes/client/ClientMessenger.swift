@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory> {
+public class ClientMessenger: Messenger {
     var services: [String:NetService] = [:]
     var isReady: Bool = false
     
-    var connection: Connection<MessageFactory>?
+    public var responders: ResponderChain = ResponderChain()
+    var connection: Connection?
     var serviceBrowser: GameControllerServiceBrowser
-    public var delegate: ClientMessengerDelegate<MessageFactory>?
     
     public init() {
         self.serviceBrowser = GameControllerServiceBrowser()
@@ -25,7 +25,9 @@ public class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory> {
     public func browseForServices() {
         if self.serviceBrowser.isBrowsing {
             if !self.services.isEmpty {
-                self.delegate?.messenger(self, didUpdateServices: Array(self.services.keys))
+                let event = ServiceAvailabilityChangeEvent(availableServiceIDs: Array(self.services.keys))
+                
+                self.forwardEventToResponderChain(event: event, fromConnectionWithID: nil)
             }
         }
         
@@ -49,9 +51,9 @@ public class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory> {
             throw ConnectionError.connectionFailure
         }
         
-        let newConnection = Connection<MessageFactory>(input: inputStream!, output: outputStream!)
+        let newConnection = Connection(input: inputStream!, output: outputStream!)
         self.connection = newConnection
-        newConnection.delegate = ConnectionDelegate(self)
+        newConnection.delegate = self
         newConnection.open()
     }
     
@@ -60,16 +62,22 @@ public class ClientMessenger<MessageFactory: JSONConvertibleMessageFactory> {
         
         self.connection?.close()
         self.connection = nil
-        
-        self.delegate?.messengerDisconnected(self)
     }
     
-    public func sendMessage(_ message: MessageFactory.Message) throws {
+    public func sendMessage<Message: JSONConvertibleMessage>(_ message: Message) throws {
         guard self.isReady else {
             throw ConnectionError.notConnected
         }
         
         self.connection?.sendMessage(message)
+    }
+    
+    public func registerResponder(_ responder: ConnectionResponder) {
+        if let clientResponder = responder as? ClientConnectionResponder {
+            self.responders.append(ClientResponderChainNode(responder: responder))
+        } else {
+            self.responders.append(ResponderChainNode(responder: responder))
+        }
     }
 }
 
@@ -85,7 +93,9 @@ extension ClientMessenger: GameControllerServiceBrowserDelegate {
         self.services[service.name] = service
         
         if !moreComing {
-            self.delegate?.messenger(self, didUpdateServices: Array(self.services.keys))
+            let event = ServiceAvailabilityChangeEvent(availableServiceIDs: Array(self.services.keys))
+            
+            self.forwardEventToResponderChain(event: event, fromConnectionWithID: nil)
         }
     }
     
@@ -93,28 +103,43 @@ extension ClientMessenger: GameControllerServiceBrowserDelegate {
         self.services.removeValue(forKey: service.name)
         
         if !moreComing {
-            self.delegate?.messenger(self, didUpdateServices: Array(self.services.keys))
+            let event = ServiceAvailabilityChangeEvent(availableServiceIDs: Array(self.services.keys))
+            
+            self.forwardEventToResponderChain(event: event, fromConnectionWithID: nil)
         }
     }
 }
 
 // MARK: - ConnectionDelegate protocol
 
-extension ClientMessenger: ConnectionDelegateProtocol {
-    func connection(_ connection: Connection<MessageFactory>, hasEndedWithErrors: Bool) {
+extension ClientMessenger: ConnectionDelegate {
+    func connection(_ connection: Connection, hasEndedWithErrors: Bool) {
         self.disconnect()
+        
+        let event = ConnectionLostEvent(connectionID: connection.identifier)
+        
+        self.forwardEventToResponderChain(event: event, fromConnectionWithID: connection.identifier)
     }
     
-    func connection(_ connection: Connection<MessageFactory>, raisedError error: Error) {
+    func connection(_ connection: Connection, raisedError error: Error) {
         self.disconnect()
+        
+        let event = ConnectionLostEvent(connectionID: connection.identifier)
+        
+        self.forwardEventToResponderChain(event: event, fromConnectionWithID: connection.identifier)
     }
     
-    func connection(_ connection: Connection<MessageFactory>, receivedMessage message: MessageFactory.Message) {
-        self.delegate?.messenger(self, didReceiveMessage: message)
+    func connection(_ connection: Connection, receivedData data: [String: Any]) {
+        let event = IncomingMessageEvent(message: data, connectionID: connection.identifier)
+        
+        self.forwardEventToResponderChain(event: event, fromConnectionWithID: connection.identifier)
     }
     
-    func connectionOpened(_ connection: Connection<MessageFactory>) {
+    func connectionOpened(_ connection: Connection) {
         self.isReady = true
-        self.delegate?.messengerConnected(self)
+        
+        let event = ConnectionAcceptedEvent(connectionID: connection.identifier)
+        
+        self.forwardEventToResponderChain(event: event, fromConnectionWithID: connection.identifier)
     }
 }

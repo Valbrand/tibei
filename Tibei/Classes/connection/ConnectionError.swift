@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ConnectionError: Error {
+public enum ConnectionError: Error {
     case inputUnavailable
     case invalidMessageType([String:Any])
     case inputError

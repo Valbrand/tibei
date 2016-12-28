@@ -9,7 +9,7 @@
 import Foundation
 import Tibei
 
-class Message: JSONConvertibleMessage {
+class TextMessage: JSONConvertibleMessage {
     var sender: String
     var content: String
     

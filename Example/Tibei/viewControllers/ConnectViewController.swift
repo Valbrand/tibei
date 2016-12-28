@@ -13,20 +13,16 @@ class ConnectViewController: UIViewController {
 
     @IBOutlet weak var messageContentTextField: UITextField!
     @IBOutlet weak var sendMessageButton: UIButton!
+    @IBOutlet weak var pingButton: UIButton!
     
-    let client = ClientMessenger<MessageFactory>()
+    let client = ClientMessenger()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.client.delegate = ClientMessengerDelegate(self)
+        self.client.registerResponder(self)
         self.client.browseForServices()
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func sendMessageButtonTapped(_ sender: Any) {
@@ -35,7 +31,7 @@ class ConnectViewController: UIViewController {
         let trimmedMessage = messageContent!.trimmingCharacters(in: .whitespaces)
         
         if !trimmedMessage.isEmpty {
-            let message = Message(sender: sender, content: trimmedMessage)
+            let message = TextMessage(sender: sender, content: trimmedMessage)
             
             do {
                 try self.client.sendMessage(message)
@@ -45,28 +41,34 @@ class ConnectViewController: UIViewController {
             }
         }
     }
-}
-
-extension ConnectViewController: ClientMessengerDelegateProtocol {
-    func messengerConnected(_ messenger: ClientMessenger<MessageFactory>) {
-        self.sendMessageButton.isEnabled = true
-    }
     
-    func messengerDisconnected(_ messenger: ClientMessenger<MessageFactory>) {
+    @IBAction func pingButtonTapped(_ sender: Any) {
+        let sender = UIDevice.current.name
         
-    }
-    
-    func messenger(_ messenger: ClientMessenger<MessageFactory>, didReceiveMessage message: Message) {
+        let message = PingMessage(sender: sender)
         
-    }
-    
-    func messenger(_ messenger: ClientMessenger<MessageFactory>, didUpdateServices services: [String]) {
         do {
-            try self.client.connect(serviceName: services.first!)
+            try self.client.sendMessage(message)
+        } catch {
+            print("Error trying to send message:")
+            print(error)
+        }
+    }
+}
+ 
+extension ConnectViewController: ClientConnectionResponder {
+    func availableServicesChanged(availableServiceIDs: [String]) {
+        do {
+            try self.client.connect(serviceName: availableServiceIDs.first!)
         } catch {
             print("An error occurred while trying to connect")
             print(error)
         }
+    }
+    
+    func acceptedConnection(withID connectionID: ConnectionID) {
+        self.sendMessageButton.isEnabled = true
+        self.pingButton.isEnabled = true
     }
 }
 

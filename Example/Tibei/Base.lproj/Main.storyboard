@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yZp-YU-ZEb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yZp-YU-ZEb">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -76,6 +76,16 @@
                                     <action selector="sendMessageButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9so-y3-ZLB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJk-EY-1s8">
+                                <rect key="frame" x="125.5" y="187" width="69" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="PING!!!">
+                                    <color key="titleColor" red="0.87450980389999999" green="0.20392156859999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pingButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="AG0-ag-Cko"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -83,12 +93,15 @@
                             <constraint firstItem="84B-X6-ah4" firstAttribute="centerX" secondItem="Bby-ig-L5P" secondAttribute="centerX" id="6t5-ar-Rsk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bby-ig-L5P" secondAttribute="trailing" id="8Jw-pE-UiM"/>
                             <constraint firstItem="84B-X6-ah4" firstAttribute="bottom" secondItem="Bby-ig-L5P" secondAttribute="top" constant="-8" id="CEA-nC-1RB"/>
+                            <constraint firstItem="bJk-EY-1s8" firstAttribute="centerX" secondItem="84B-X6-ah4" secondAttribute="centerX" id="MVD-Nf-JXX"/>
+                            <constraint firstItem="84B-X6-ah4" firstAttribute="top" secondItem="bJk-EY-1s8" secondAttribute="bottom" constant="8" id="f8h-eS-1pF"/>
                             <constraint firstItem="Bby-ig-L5P" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="yFF-f6-DAZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="B2o-WM-tx4"/>
                     <connections>
                         <outlet property="messageContentTextField" destination="Bby-ig-L5P" id="Edy-O4-vbG"/>
+                        <outlet property="pingButton" destination="bJk-EY-1s8" id="dp9-x1-c7P"/>
                         <outlet property="sendMessageButton" destination="84B-X6-ah4" id="Gi8-og-jLh"/>
                     </connections>
                 </viewController>
