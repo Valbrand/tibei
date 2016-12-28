@@ -73,7 +73,7 @@ public class ClientMessenger: Messenger {
     }
     
     public func registerResponder(_ responder: ConnectionResponder) {
-        if let clientResponder = responder as? ClientConnectionResponder {
+        if responder is ClientConnectionResponder {
             self.responders.append(ClientResponderChainNode(responder: responder))
         } else {
             self.responders.append(ResponderChainNode(responder: responder))
