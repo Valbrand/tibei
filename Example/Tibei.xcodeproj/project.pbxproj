@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		53D90A9801C9140B7646B372 /* Pods_Tibei_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1427BF52E35731AF0A5FF110 /* Pods_Tibei_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ConnectViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		791B3D7C656A5321206407E7 /* Pods_Tibei_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E82B1D86AF3722801E5910D /* Pods_Tibei_Example.framework */; };
+		F328DE621DF8BE2300123B3B /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328DE611DF8BE2300123B3B /* TextMessage.swift */; };
+		F39153291E13EFDA009339C8 /* PingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39153281E13EFDA009339C8 /* PingMessage.swift */; };
+		F3947C141E12E46100E05F81 /* TestMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3947C131E12E46100E05F81 /* TestMessage.swift */; };
+		F3F081D71DF83854004BCDB6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F081D61DF83854004BCDB6 /* HomeViewController.swift */; };
+		F3F081D91DF83AB8004BCDB6 /* ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F081D81DF83AB8004BCDB6 /* ServerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,12 +34,12 @@
 
 /* Begin PBXFileReference section */
 		1427BF52E35731AF0A5FF110 /* Pods_Tibei_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tibei_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A45E5BA58C264AC0D17DAFD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		3A45E5BA58C264AC0D17DAFD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		406DC3F66E4D8C86FC1146D1 /* Pods-Tibei_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tibei_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tibei_Tests/Pods-Tibei_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Tibei_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tibei_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -42,11 +47,16 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		68A331B3F6FC127E78D36478 /* Pods-Tibei_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tibei_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tibei_Tests/Pods-Tibei_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		78C431A604364EA792A8594F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		78C431A604364EA792A8594F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8D62D94BEBC71E75738CC5E2 /* Pods-Tibei_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tibei_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tibei_Example/Pods-Tibei_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9E82B1D86AF3722801E5910D /* Pods_Tibei_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tibei_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E35EE05F2F1CE890F6D0EC /* Pods-Tibei_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tibei_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tibei_Example/Pods-Tibei_Example.release.xcconfig"; sourceTree = "<group>"; };
-		FA0AECF9A2453BB0BB4082AE /* Tibei.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Tibei.podspec; path = ../Tibei.podspec; sourceTree = "<group>"; };
+		F328DE611DF8BE2300123B3B /* TextMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
+		F39153281E13EFDA009339C8 /* PingMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingMessage.swift; sourceTree = "<group>"; };
+		F3947C131E12E46100E05F81 /* TestMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMessage.swift; sourceTree = "<group>"; };
+		F3F081D61DF83854004BCDB6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F3F081D81DF83AB8004BCDB6 /* ServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerViewController.swift; sourceTree = "<group>"; };
+		FA0AECF9A2453BB0BB4082AE /* Tibei.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Tibei.podspec; path = ../Tibei.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
-				607FACD21AFB9204008FA782 /* Example for Tibei */,
+				607FACD21AFB9204008FA782 /* Tibei Example iOS */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				C64620A8702E1DFF706A263A /* Pods */,
@@ -90,17 +100,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		607FACD21AFB9204008FA782 /* Example for Tibei */ = {
+		607FACD21AFB9204008FA782 /* Tibei Example iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F39153271E13ED38009339C8 /* messages */,
+				F39153261E13ED18009339C8 /* viewControllers */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
-			name = "Example for Tibei";
+			name = "Tibei Example iOS";
 			path = Tibei;
 			sourceTree = "<group>";
 		};
@@ -117,6 +128,7 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				F3947C131E12E46100E05F81 /* TestMessage.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -157,6 +169,25 @@
 				68A331B3F6FC127E78D36478 /* Pods-Tibei_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F39153261E13ED18009339C8 /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD71AFB9204008FA782 /* ConnectViewController.swift */,
+				F3F081D61DF83854004BCDB6 /* HomeViewController.swift */,
+				F3F081D81DF83AB8004BCDB6 /* ServerViewController.swift */,
+			);
+			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		F39153271E13ED38009339C8 /* messages */ = {
+			isa = PBXGroup;
+			children = (
+				F328DE611DF8BE2300123B3B /* TextMessage.swift */,
+				F39153281E13EFDA009339C8 /* PingMessage.swift */,
+			);
+			path = messages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,15 +240,19 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YWHYND727K;
+						LastSwiftMigration = 0810;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YWHYND727K;
+						LastSwiftMigration = 0810;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -359,8 +394,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* ConnectViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				F328DE621DF8BE2300123B3B /* TextMessage.swift in Sources */,
+				F39153291E13EFDA009339C8 /* PingMessage.swift in Sources */,
+				F3F081D71DF83854004BCDB6 /* HomeViewController.swift in Sources */,
+				F3F081D91DF83AB8004BCDB6 /* ServerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				F3947C141E12E46100E05F81 /* TestMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,8 +455,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -460,8 +502,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -480,6 +524,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -488,12 +533,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D62D94BEBC71E75738CC5E2 /* Pods-Tibei_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YWHYND727K;
 				INFOPLIST_FILE = Tibei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -501,12 +549,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A7E35EE05F2F1CE890F6D0EC /* Pods-Tibei_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YWHYND727K;
 				INFOPLIST_FILE = Tibei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -514,6 +565,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 406DC3F66E4D8C86FC1146D1 /* Pods-Tibei_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = YWHYND727K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -526,6 +579,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -533,6 +587,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68A331B3F6FC127E78D36478 /* Pods-Tibei_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = YWHYND727K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -541,6 +597,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
