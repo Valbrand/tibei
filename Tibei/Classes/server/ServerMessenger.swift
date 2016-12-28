@@ -14,8 +14,8 @@ public class ServerMessenger: Messenger {
     public var responders: ResponderChain = ResponderChain()
     var gameControllerServer: GameControllerServer!
     
-    public init() {
-        self.gameControllerServer = GameControllerServer(messenger: self)
+    public init(serviceIdentifier: String) {
+        self.gameControllerServer = GameControllerServer(messenger: self, serviceIdentifier: serviceIdentifier)
         
         self.gameControllerServer.publishService()
     }

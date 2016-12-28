@@ -21,7 +21,7 @@ class ConnectViewController: UIViewController {
         super.viewDidLoad()
         
         self.client.registerResponder(self)
-        self.client.browseForServices()
+        self.client.browseForServices(withIdentifier: "_tibei")
         
     }
 

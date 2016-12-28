@@ -22,7 +22,7 @@ public class ClientMessenger: Messenger {
         self.serviceBrowser.delegate = self
     }
     
-    public func browseForServices() {
+    public func browseForServices(withIdentifier serviceIdentifier: String) {
         if self.serviceBrowser.isBrowsing {
             if !self.services.isEmpty {
                 let event = ServiceAvailabilityChangeEvent(availableServiceIDs: Array(self.services.keys))
@@ -31,7 +31,7 @@ public class ClientMessenger: Messenger {
             }
         }
         
-        self.serviceBrowser.startBrowsing()
+        self.serviceBrowser.startBrowsing(forServiceType: serviceIdentifier)
     }
     
     public func stopBrowsingForServices() {

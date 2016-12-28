@@ -13,7 +13,7 @@ class ServerViewController: UIViewController {
 
     @IBOutlet weak var incomingMessageLabel: UILabel!
     
-    let server = ServerMessenger()
+    let server = ServerMessenger(serviceIdentifier: "_tibei")
     
     override func viewDidLoad() {
         super.viewDidLoad()

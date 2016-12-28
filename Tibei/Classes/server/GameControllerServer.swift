@@ -16,12 +16,10 @@ class GameControllerServer: NSObject, NetServiceDelegate {
     
     let messenger: ServerMessenger
     
-    init(messenger: ServerMessenger) {
+    init(messenger: ServerMessenger, serviceIdentifier: String) {
         self.messenger = messenger
         
-        var serviceType: String
-        let baseServiceType = Bundle.main.object(forInfoDictionaryKey: "GameControllerServiceType") as! String
-        serviceType = "\(baseServiceType)._tcp"
+        let serviceType = "\(serviceIdentifier)._tcp"
         
         self.service = NetService(domain: "local", type: serviceType, name: self.deviceName)
         
