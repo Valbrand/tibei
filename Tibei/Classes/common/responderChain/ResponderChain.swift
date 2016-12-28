@@ -81,7 +81,7 @@ public class ResponderChain {
                 return
             }
             
-            self.tail?.next = newNode
+            chainTail.next = newNode
             self.tail = newNode
         }
     }
