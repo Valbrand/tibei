@@ -24,21 +24,8 @@ class GameControllerServiceBrowser: NSObject {
         self.serviceBrowser.delegate = self
     }
     
-    func startBrowsing() {
-        var serviceType: String
-
-        #if DEBUG
-            let baseServiceType = Bundle.main.object(forInfoDictionaryKey: "GameControllerServiceType") as! String
-            let currentUser = Bundle.main.object(forInfoDictionaryKey: "CurrentUser") as? String ?? ""
-
-            serviceType = "\(baseServiceType)\(currentUser)._tcp"
-        #else
-            let baseServiceType = Bundle.main.object(forInfoDictionaryKey: "GameControllerServiceType") as! String
-
-            serviceType = "\(baseServiceType)._tcp"
-        #endif
-
-        self.serviceBrowser.searchForServices(ofType: serviceType, inDomain: "local")
+    func startBrowsing(forServiceType serviceIdentifier: String) {
+        self.serviceBrowser.searchForServices(ofType: "\(serviceIdentifier)._tcp", inDomain: "local")
     }
     
     func stopBrowsing() {
