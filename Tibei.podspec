@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Tibei is a library that enables simple communication between devices, using Bonjour to publish and discover them. It is currently in a very early stage of development, still lacking documentation and proper polishing.
+Tibei is a library that enables simple communication between devices, using Bonjour to publish and discover them. It is currently in a very early stage of development, still lacking documentation, testing and proper API polishing. This is a WIP.
                        DESC
 
   s.homepage         = 'https://github.com/valbrand/Tibei'

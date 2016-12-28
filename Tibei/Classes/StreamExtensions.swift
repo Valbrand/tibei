@@ -11,6 +11,7 @@ import Foundation
 extension OutputStream {
     typealias Length = UInt32
     
+    @discardableResult
     func writeMessage<Message: JSONConvertibleMessage>(_ message: Message) throws -> Int {
         guard self.hasSpaceAvailable else {
             throw ConnectionError.outputStreamUnavailable
