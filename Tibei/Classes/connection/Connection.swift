@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelegate {
+public class Connection: NSObject, StreamDelegate {
     let outwardMessagesQueue: OperationQueue = OperationQueue()
     public let identifier: ConnectionID
     
@@ -25,7 +25,7 @@ public class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelega
         return self.identifier.id.hashValue
     }
     
-    var delegate: ConnectionDelegate<Message>?
+    var delegate: ConnectionDelegate?
     
     init(input: InputStream, output: OutputStream, identifier: ConnectionID? = nil) {
         self.input = input
@@ -57,7 +57,7 @@ public class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelega
         stream.close()
     }
     
-    func sendMessage(_ message: Message) {
+    func sendMessage<Message: JSONConvertibleMessage>(_ message: Message) {
         self.outwardMessagesQueue.addOperation {
             do {
                 _ = try self.output.writeMessage(message)
@@ -67,7 +67,7 @@ public class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelega
         }
     }
     
-    func dataFromInput(_ stream: InputStream) throws -> IncomingMessageData<Message> {
+    func dataFromInput(_ stream: InputStream) throws -> IncomingData {
         var lengthInBytes = Array<UInt8>(repeating: 0, count: MemoryLayout<Constants.MessageLength>.size)
         _ = stream.read(&lengthInBytes, maxLength: lengthInBytes.count)
         let length: Constants.MessageLength = UnsafePointer(lengthInBytes).withMemoryRebound(to: Constants.MessageLength.self, capacity: 1) {
@@ -96,6 +96,9 @@ public class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelega
                     return .keepAliveMessage
                 }
             }
+            
+            print("Received payload:")
+            print(payload)
             
             return .data(payload)
         }
@@ -149,7 +152,7 @@ public class Connection<Message: JSONConvertibleMessage>: NSObject, StreamDelega
             }
         case Stream.Event.hasBytesAvailable:
             do {
-                let incomingData: IncomingMessageData<Message> = try self.dataFromInput(self.input)
+                let incomingData: IncomingData = try self.dataFromInput(self.input)
                 
                 if case .data(let payload) = incomingData {
                     self.delegate?.connection(self, receivedData: payload)

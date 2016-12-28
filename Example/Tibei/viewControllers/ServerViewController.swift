@@ -13,7 +13,7 @@ class ServerViewController: UIViewController {
 
     @IBOutlet weak var incomingMessageLabel: UILabel!
     
-    let server = ServerMessenger<Message>()
+    let server = ServerMessenger()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,13 @@ class ServerViewController: UIViewController {
 
 extension ServerViewController: ConnectionResponder {
     var allowedMessages: [JSONConvertibleMessage.Type] {
-        return [Message.self]
+        return [TextMessage.self, PingMessage.self]
     }
     
     func processMessage(_ message: JSONConvertibleMessage, fromConnectionWithID connectionID: ConnectionID) {
-        print(message.toJSONObject())
         
-        if let textMessage = message as? Message {
+        switch message {
+        case let textMessage as TextMessage:
             let labelContent = NSMutableAttributedString(string: "\(textMessage.sender): \(textMessage.content)")
             
             labelContent.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleDouble.rawValue, range: NSMakeRange(0, textMessage.sender.characters.count + 1))
@@ -38,6 +38,16 @@ extension ServerViewController: ConnectionResponder {
             DispatchQueue.main.async {
                 self.incomingMessageLabel.attributedText = labelContent
             }
+            
+        case let pingMessage as PingMessage:
+            let labelContent = NSMutableAttributedString(string: "PING FROM \(pingMessage.sender)!!")
+            
+            DispatchQueue.main.async {
+                self.incomingMessageLabel.attributedText = labelContent
+            }
+            
+        default:
+            break
         }
     }
     

@@ -9,14 +9,14 @@
 import UIKit
 import Foundation
 
-class GameControllerServer<Message: JSONConvertibleMessage>: NSObject, NetServiceDelegate {
+class GameControllerServer: NSObject, NetServiceDelegate {
     let deviceName: String = UIDevice.current.name
     
     let service: NetService
     
-    let messenger: ServerMessenger<Message>
+    let messenger: ServerMessenger
     
-    init(messenger: ServerMessenger<Message>) {
+    init(messenger: ServerMessenger) {
         self.messenger = messenger
         
         var serviceType: String
@@ -41,7 +41,7 @@ class GameControllerServer<Message: JSONConvertibleMessage>: NSObject, NetServic
         OperationQueue.main.addOperation {
             [weak self] in
             
-            let newConnection = Connection<Message>(input: inputStream, output: outputStream)
+            let newConnection = Connection(input: inputStream, output: outputStream)
             
             self?.messenger.addConnection(newConnection)
         }
