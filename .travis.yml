@@ -6,11 +6,11 @@ env:
   - LANG=en_US.UTF-8
   - WORKSPACE=Tibei.xcworkspace
   - IOS_SCHEME="Tibei-iOS"
-  - IOS_SDK=iphonesimulator8.4
+  - IOS_SDK=iphonesimulator10.2
   # - OSX_SCHEME="MyFrameworkOSX"
   # - OSX_SDK=macosx10.11
   - TVOS_SCHEME="Tibei-tvOS"
-  - TVOS_SDK=appletvsimulator9.0
+  - TVOS_SDK=appletvsimulator10.1
   matrix:
     - DESTINATION="OS=8.4,name=iPhone 4S"        SCHEME="$IOS_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" POD_LINT="NO"
     - DESTINATION="OS=8.4,name=iPhone 5"         SCHEME="$IOS_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" POD_LINT="NO"
