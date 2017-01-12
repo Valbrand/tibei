@@ -1,6 +1,0 @@
-framework module Pods_Tibei_Example {
-  umbrella header "Pods-Tibei_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}
