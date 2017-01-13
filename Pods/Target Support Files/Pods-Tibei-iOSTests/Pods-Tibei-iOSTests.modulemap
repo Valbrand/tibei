@@ -1,0 +1,6 @@
+framework module Pods_Tibei_iOSTests {
+  umbrella header "Pods-Tibei-iOSTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
