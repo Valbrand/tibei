@@ -1,4 +1,12 @@
 //
+//  SecondServerViewController.swift
+//  Tibei
+//
+//  Created by Daniel de Jesus Oliveira on 18/01/2017.
+//
+//
+
+//
 //  ServerViewController.swift
 //  Tibei
 //
@@ -9,8 +17,8 @@
 import UIKit
 import Tibei
 
-class ServerViewController: UIViewController {
-
+class SecondServerViewController: UIViewController {
+    
     @IBOutlet weak var incomingMessageLabel: UILabel!
     
     var server: ServerMessenger?
@@ -34,12 +42,12 @@ class ServerViewController: UIViewController {
         server?.registerResponder(self)
     }
     
-    @IBAction func unwindToFirst(segue: UIStoryboardSegue) {
-        
+    @IBAction func unwindAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "unwindSegue", sender: nil)
     }
 }
 
-extension ServerViewController: ConnectionResponder {
+extension SecondServerViewController: ConnectionResponder {
     var allowedMessages: [JSONConvertibleMessage.Type] {
         return [TextMessage.self, PingMessage.self]
     }
@@ -95,3 +103,4 @@ extension ServerViewController: ConnectionResponder {
         print(error)
     }
 }
+

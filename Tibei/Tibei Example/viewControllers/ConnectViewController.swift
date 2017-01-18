@@ -15,7 +15,7 @@ class ConnectViewController: UIViewController {
     @IBOutlet weak var sendMessageButton: UIButton!
     @IBOutlet weak var pingButton: UIButton!
     
-    let client = ClientMessenger()
+    let client = Facade.shared.client
     
     override func viewDidLoad() {
         super.viewDidLoad()

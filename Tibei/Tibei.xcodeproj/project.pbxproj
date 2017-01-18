@@ -10,6 +10,8 @@
 		B4DF85A2D26A5801145CC27A /* Pods_Tibei_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C08A527DBB05707A62E547 /* Pods_Tibei_tvOSTests.framework */; };
 		DDAB9AE133F5CDAC253DC449 /* Pods_Tibei_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A510035E752B12DB59B4316C /* Pods_Tibei_iOSTests.framework */; };
 		ED85507ECC3659400A3CBAD7 /* Pods_Tibei_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449473D71D22E904AC1FED0F /* Pods_Tibei_tvOS.framework */; };
+		F343AB0B1E2FA3C100E12DE0 /* SecondServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343AB0A1E2FA3C100E12DE0 /* SecondServerViewController.swift */; };
+		F343AB0D1E2FA59500E12DE0 /* Facade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343AB0C1E2FA59500E12DE0 /* Facade.swift */; };
 		F3C8626B1E27B193004070B2 /* Tibei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C862611E27B193004070B2 /* Tibei.framework */; };
 		F3C862701E27B193004070B2 /* Tibei_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8626F1E27B193004070B2 /* Tibei_iOSTests.swift */; };
 		F3C862721E27B193004070B2 /* Tibei-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F3C862641E27B193004070B2 /* Tibei-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -128,6 +130,8 @@
 		A510035E752B12DB59B4316C /* Pods_Tibei_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tibei_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E579BE180A6474D7799C7F /* Pods-Tibei-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tibei-tvOSTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Tibei-tvOSTests/Pods-Tibei-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D49A3F28FAB00569E7A791BF /* Pods-Tibei-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tibei-tvOS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Tibei-tvOS/Pods-Tibei-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F343AB0A1E2FA3C100E12DE0 /* SecondServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondServerViewController.swift; sourceTree = "<group>"; };
+		F343AB0C1E2FA59500E12DE0 /* Facade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facade.swift; sourceTree = "<group>"; };
 		F3C862611E27B193004070B2 /* Tibei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tibei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C862641E27B193004070B2 /* Tibei-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tibei-iOS.h"; sourceTree = "<group>"; };
 		F3C862651E27B193004070B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -434,6 +438,7 @@
 				F3C862F31E27C289004070B2 /* Main.storyboard */,
 				F3C862F61E27C289004070B2 /* Assets.xcassets */,
 				F3C862FB1E27C289004070B2 /* Info.plist */,
+				F343AB0C1E2FA59500E12DE0 /* Facade.swift */,
 			);
 			path = "Tibei Example";
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				F3C863031E27C2E0004070B2 /* ConnectViewController.swift */,
 				F3C863041E27C2E0004070B2 /* HomeViewController.swift */,
 				F3C863051E27C2E0004070B2 /* ServerViewController.swift */,
+				F343AB0A1E2FA3C100E12DE0 /* SecondServerViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -914,9 +920,11 @@
 				F3C863091E27C2E0004070B2 /* HomeViewController.swift in Sources */,
 				F3C862F01E27C289004070B2 /* AppDelegate.swift in Sources */,
 				F3C863061E27C2E0004070B2 /* PingMessage.swift in Sources */,
+				F343AB0D1E2FA59500E12DE0 /* Facade.swift in Sources */,
 				F3C8630A1E27C2E0004070B2 /* ServerViewController.swift in Sources */,
 				F3C863071E27C2E0004070B2 /* TextMessage.swift in Sources */,
 				F3C863081E27C2E0004070B2 /* ConnectViewController.swift in Sources */,
+				F343AB0B1E2FA3C100E12DE0 /* SecondServerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1582,6 +1590,7 @@
 				F3C862FD1E27C289004070B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

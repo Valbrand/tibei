@@ -94,6 +94,10 @@ public class ResponderChain {
             
             if let head = self.head {
                 if head.responder === nodeToRemove.responder {
+                    if head === self.tail {
+                        self.tail = nil
+                    }
+                    
                     self.head = head.next
                     head.next = nil
                     return
