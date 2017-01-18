@@ -16,7 +16,9 @@ public class ServerMessenger: Messenger {
     
     public init(serviceIdentifier: String) {
         self.gameControllerServer = GameControllerServer(messenger: self, serviceIdentifier: serviceIdentifier)
-        
+    }
+    
+    public func publishService() {
         self.gameControllerServer.publishService()
     }
     

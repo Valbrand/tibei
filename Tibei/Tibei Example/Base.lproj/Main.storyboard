@@ -121,18 +121,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAH-rK-XiV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAH-rK-XiV">
                                 <rect key="frame" x="16" y="274" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdY-bT-Cfr">
+                                <rect key="frame" x="216" y="518" width="88" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Next screen">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="7Ew-lW-MGx" kind="show" id="GB8-gP-GfH"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="zAH-rK-XiV" secondAttribute="leading" id="Kv5-IZ-r0u"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zAH-rK-XiV" secondAttribute="trailing" id="UQh-Wq-VQd"/>
                             <constraint firstItem="zAH-rK-XiV" firstAttribute="centerY" secondItem="nhC-K6-6gH" secondAttribute="centerY" id="Zye-Em-Tuy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FdY-bT-Cfr" secondAttribute="trailing" id="csg-63-sGU"/>
+                            <constraint firstItem="se7-Tb-rqA" firstAttribute="top" secondItem="FdY-bT-Cfr" secondAttribute="bottom" constant="20" id="kUp-cc-iMV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -142,6 +154,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E27-Zd-Nfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="847.5" y="564.08450704225356"/>
+        </scene>
+        <!--Second Server View Controller-->
+        <scene sceneID="5ct-Yv-I7B">
+            <objects>
+                <viewController id="7Ew-lW-MGx" customClass="SecondServerViewController" customModule="Tibei_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WM4-sN-gLG"/>
+                        <viewControllerLayoutGuide type="bottom" id="zLa-d0-lcZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G4r-kI-83v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3J-W8-aDK">
+                                <rect key="frame" x="16" y="274" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJy-CE-gxw">
+                                <rect key="frame" x="16" y="518" width="118" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Previous screen">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="unwindAction:" destination="7Ew-lW-MGx" eventType="touchUpInside" id="UjP-Ig-zNQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zLa-d0-lcZ" firstAttribute="top" secondItem="gJy-CE-gxw" secondAttribute="bottom" constant="20" id="92y-xC-0G3"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gJy-CE-gxw" secondAttribute="leading" id="Lf2-DU-bHW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="z3J-W8-aDK" secondAttribute="leading" id="Los-am-I6b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z3J-W8-aDK" secondAttribute="trailing" id="iUS-Or-s55"/>
+                            <constraint firstItem="z3J-W8-aDK" firstAttribute="centerY" secondItem="G4r-kI-83v" secondAttribute="centerY" id="z3m-WQ-dpt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="incomingMessageLabel" destination="z3J-W8-aDK" id="0Bf-KX-8U5"/>
+                        <segue destination="Xhb-Wm-b3R" kind="unwind" identifier="unwindSegue" unwindAction="unwindToFirstWithSegue:" id="GmB-QY-JI9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vg2-1y-oR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Xhb-Wm-b3R" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1642" y="567"/>
         </scene>
     </scenes>
 </document>
