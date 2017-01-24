@@ -22,6 +22,10 @@ public class ServerMessenger: Messenger {
         self.gameControllerServer.publishService()
     }
     
+    public func unpublishService() {
+        self.gameControllerServer.unpublishService()
+    }
+    
     func addConnection(_ connection: Connection) {
         connection.delegate = self
         

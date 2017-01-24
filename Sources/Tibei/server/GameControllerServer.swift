@@ -32,6 +32,10 @@ class GameControllerServer: NSObject, NetServiceDelegate {
         self.service.publish(options: .listenForConnections)
     }
     
+    func unpublishService() {
+        self.service.stop()
+    }
+    
     // MARK: - NetServiceDelegate protocol
     // As opposed to the rest of the project, this method is inside the class definition instead
     // of inside an extension because otherwise, an @nonobjc attribute would be needed
