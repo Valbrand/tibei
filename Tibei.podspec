@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Tibei'
-  s.version          = '0.1.3'
+  s.version          = '0.2'
   s.summary          = 'A Bonjour-powered library to simplify communication between devices.'
 
 # This description is used to generate tags and improve search results.
