@@ -41,6 +41,11 @@ public class ServerMessenger: Messenger {
         connection.sendMessage(message)
     }
     
+    public func broadcastMessage<Message: JSONConvertibleMessage>(_ message: Message){
+        for (_, connection) in self.connections{
+            connection.sendMessage(message)
+        }
+    }
 }
 
 // MARK: - ConnectionDelegate protocol
