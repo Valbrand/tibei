@@ -14,10 +14,10 @@ public class ClientMessenger: Messenger {
     
     public var responders: ResponderChain = ResponderChain()
     var connection: Connection?
-    var serviceBrowser: GameControllerServiceBrowser
+    var serviceBrowser: TibeiServiceBrowser
     
     public init() {
-        self.serviceBrowser = GameControllerServiceBrowser()
+        self.serviceBrowser = TibeiServiceBrowser()
         
         self.serviceBrowser.delegate = self
     }
@@ -83,13 +83,13 @@ public class ClientMessenger: Messenger {
 
 // MARK: - GameControllerServiceBrowserDelegate protocol
 
-extension ClientMessenger: GameControllerServiceBrowserDelegate {
-    func gameControllerServiceBrowser(_ browser: GameControllerServiceBrowser, raisedErrors errorDict: [String : NSNumber]) {
+extension ClientMessenger: TibeiServiceBrowserDelegate {
+    func gameControllerServiceBrowser(_ browser: TibeiServiceBrowser, raisedErrors errorDict: [String : NSNumber]) {
         print("Service browser raised errors:")
         print(errorDict)
     }
     
-    func gameControllerServiceBrowser(_ browser: GameControllerServiceBrowser, foundService service: NetService, moreComing: Bool) {
+    func gameControllerServiceBrowser(_ browser: TibeiServiceBrowser, foundService service: NetService, moreComing: Bool) {
         self.services[service.name] = service
         
         if !moreComing {
@@ -99,7 +99,7 @@ extension ClientMessenger: GameControllerServiceBrowserDelegate {
         }
     }
     
-    func gameControllerServiceBrowser(_ browser: GameControllerServiceBrowser, removedService service: NetService, moreComing: Bool) {
+    func gameControllerServiceBrowser(_ browser: TibeiServiceBrowser, removedService service: NetService, moreComing: Bool) {
         self.services.removeValue(forKey: service.name)
         
         if !moreComing {

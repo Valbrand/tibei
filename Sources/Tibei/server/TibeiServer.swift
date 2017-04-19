@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class GameControllerServer: NSObject, NetServiceDelegate {
+class TibeiServer: NSObject, NetServiceDelegate {
     let deviceName: String = UIDevice.current.name
     
     let service: NetService
