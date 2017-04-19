@@ -12,10 +12,10 @@ public class ServerMessenger: Messenger {
     var connections: [ConnectionID: Connection] = [:]
     
     public var responders: ResponderChain = ResponderChain()
-    var gameControllerServer: GameControllerServer!
+    var gameControllerServer: TibeiServer!
     
     public init(serviceIdentifier: String) {
-        self.gameControllerServer = GameControllerServer(messenger: self, serviceIdentifier: serviceIdentifier)
+        self.gameControllerServer = TibeiServer(messenger: self, serviceIdentifier: serviceIdentifier)
     }
     
     public func publishService() {
