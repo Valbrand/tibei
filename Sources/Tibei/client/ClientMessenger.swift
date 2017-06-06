@@ -8,10 +8,14 @@
 
 import UIKit
 
+/// Represents a messenger that sends and receives messages from the client-side.
+///
+/// After a connection takes place, it will represent the connection.
 public class ClientMessenger: Messenger {
     var services: [String:NetService] = [:]
     var isReady: Bool = false
     
+    /// The chain of registered message responders
     public var responders: ResponderChain = ResponderChain()
     var connection: Connection?
     var serviceBrowser: TibeiServiceBrowser
@@ -22,6 +26,9 @@ public class ClientMessenger: Messenger {
         self.serviceBrowser.delegate = self
     }
     
+    /// Browses for services that are currently being published via Bonjour with a certain service identifier.
+    ///
+    /// - Parameter serviceIdentifier: Service identifier being currently browsed for
     public func browseForServices(withIdentifier serviceIdentifier: String) {
         if self.serviceBrowser.isBrowsing {
             if !self.services.isEmpty {
@@ -34,10 +41,16 @@ public class ClientMessenger: Messenger {
         self.serviceBrowser.startBrowsing(forServiceType: serviceIdentifier)
     }
     
+    /// Stops browsing for services.
+    /// ConnectionResponders will stop receiving `availableServicesChanged` calls after this is called.
     public func stopBrowsingForServices() {
         self.serviceBrowser.stopBrowsing()
     }
     
+    /// Connects to a service based on its provider's identifier
+    ///
+    /// - Parameter serviceName: The name of the service to connect to
+    /// - Throws: `ConnectionError.inexistentService` if the `serviceName` parameter is provided, and `ConnectionError.connectionFailure` if some error occurred while obtaining input stream from connection
     public func connect(serviceName: String) throws {
         guard let service = self.services[serviceName] else {
             throw ConnectionError.inexistentService
@@ -57,6 +70,7 @@ public class ClientMessenger: Messenger {
         newConnection.open()
     }
     
+    /// Disconnects from the currently connected service. Does nothing if this messenger is not connected to any service.
     public func disconnect() {
         self.isReady = false
         
@@ -64,6 +78,10 @@ public class ClientMessenger: Messenger {
         self.connection = nil
     }
     
+    /// Sends a message to the currently active connection.
+    ///
+    /// - Parameter message: Message to send.
+    /// - Throws: `ConnectionError.notConnected` if there is no connection to send the message to.
     public func sendMessage<Message: JSONConvertibleMessage>(_ message: Message) throws {
         guard self.isReady else {
             throw ConnectionError.notConnected
@@ -72,6 +90,9 @@ public class ClientMessenger: Messenger {
         self.connection?.sendMessage(message)
     }
     
+    /// Registers a new responder to this messenger's responder chain.
+    ///
+    /// - Parameter responder: Responder to register in the chain.
     public func registerResponder(_ responder: ConnectionResponder) {
         if responder is ClientConnectionResponder {
             self.responders.append(ClientResponderChainNode(responder: responder))
