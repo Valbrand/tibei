@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ClientMessenger Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ClientMessenger" class="dashAnchor"></a>
+    <a title="ClientMessenger Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Tibei Docs</a> (19% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Tibei Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ClientMessenger Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ClientMessenger.html">ClientMessenger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Connection.html">Connection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C5Tibei14ResponderChain">ResponderChain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ServerMessenger.html">ServerMessenger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ConnectionError.html">ConnectionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ClientConnectionResponder.html">ClientConnectionResponder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ConnectionResponder.html">ConnectionResponder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/JSONConvertibleMessage.html">JSONConvertibleMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Messenger.html">Messenger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ConnectionID.html">ConnectionID</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ClientMessenger</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ClientMessenger</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Messenger.html">Messenger</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Represents a messenger that sends and receives messages from the client-side.</p>
+
+<p>After a connection takes place, it will represent the connection.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC5Tibei15ClientMessenger10respondersCS_14ResponderChain"></a>
+                    <a name="//apple_ref/swift/Property/responders" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC5Tibei15ClientMessenger10respondersCS_14ResponderChain">responders</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The chain of registered message responders</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">responders</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:C5Tibei14ResponderChain">ResponderChain</a></span> <span class="o">=</span> <span class="kt"><a href="../Classes.html#/s:C5Tibei14ResponderChain">ResponderChain</a></span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Tibei15ClientMessengercFT_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Tibei15ClientMessengercFT_S0_">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ClientMessenger</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Messenger.html">Messenger</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Tibei15ClientMessenger17browseForServicesFT14withIdentifierSS_T_"></a>
+                    <a name="//apple_ref/swift/Method/browseForServices(withIdentifier:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Tibei15ClientMessenger17browseForServicesFT14withIdentifierSS_T_">browseForServices(withIdentifier:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Browses for services that are currently being published via Bonjour with a certain service identifier.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">browseForServices</span><span class="p">(</span><span class="n">withIdentifier</span> <span class="nv">serviceIdentifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>serviceIdentifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Service identifier being currently browsed for</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Tibei15ClientMessenger23stopBrowsingForServicesFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/stopBrowsingForServices()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Tibei15ClientMessenger23stopBrowsingForServicesFT_T_">stopBrowsingForServices()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stops browsing for services.
+ConnectionResponders will stop receiving <code>availableServicesChanged</code> calls after this is called.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stopBrowsingForServices</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Tibei15ClientMessenger7connectFzT11serviceNameSS_T_"></a>
+                    <a name="//apple_ref/swift/Method/connect(serviceName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Tibei15ClientMessenger7connectFzT11serviceNameSS_T_">connect(serviceName:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Connects to a service based on its provider&rsquo;s identifier</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code><a href="../Enums/ConnectionError.html#/s:FO5Tibei15ConnectionError17inexistentServiceFMS0_S0_">ConnectionError.inexistentService</a></code> if the <code>serviceName</code> parameter is provided, and <code><a href="../Enums/ConnectionError.html#/s:FO5Tibei15ConnectionError17connectionFailureFMS0_S0_">ConnectionError.connectionFailure</a></code> if some error occurred while obtaining input stream from connection
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">connect</span><span class="p">(</span><span class="nv">serviceName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>serviceName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the service to connect to</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Tibei15ClientMessenger10disconnectFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/disconnect()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Tibei15ClientMessenger10disconnectFT_T_">disconnect()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Disconnects from the currently connected service. Does nothing if this messenger is not connected to any service.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">disconnect</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Tibei15ClientMessenger11sendMessageuRxS_22JSONConvertibleMessagerFzxT_"></a>
+                    <a name="//apple_ref/swift/Method/sendMessage(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Tibei15ClientMessenger11sendMessageuRxS_22JSONConvertibleMessagerFzxT_">sendMessage(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sends a message to the currently active connection.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code><a href="../Enums/ConnectionError.html#/s:FO5Tibei15ConnectionError12notConnectedFMS0_S0_">ConnectionError.notConnected</a></code> if there is no connection to send the message to.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">sendMessage</span><span class="o">&lt;</span><span class="kt">Message</span><span class="p">:</span> <span class="kt"><a href="../Protocols/JSONConvertibleMessage.html">JSONConvertibleMessage</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">Message</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>message</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Message to send.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC5Tibei15ClientMessenger17registerResponderFPS_19ConnectionResponder_T_"></a>
+                    <a name="//apple_ref/swift/Method/registerResponder(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC5Tibei15ClientMessenger17registerResponderFPS_19ConnectionResponder_T_">registerResponder(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Registers a new responder to this messenger&rsquo;s responder chain.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerResponder</span><span class="p">(</span><span class="n">_</span> <span class="nv">responder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ConnectionResponder.html">ConnectionResponder</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>responder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Responder to register in the chain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/valbrand/Tibei" target="_blank" rel="external">Valbrand</a>. All rights reserved. (Last updated: 2017-06-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
