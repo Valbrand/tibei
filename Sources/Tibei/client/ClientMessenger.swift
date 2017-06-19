@@ -8,9 +8,11 @@
 
 import UIKit
 
-/// Represents a messenger that sends and receives messages from the client-side.
-///
-/// After a connection takes place, it will represent the connection.
+/**
+ Represents a messenger that sends and receives messages from the client-side.
+
+ After a connection takes place, it will represent the connection.
+*/
 public class ClientMessenger: Messenger {
     var services: [String:NetService] = [:]
     var isReady: Bool = false
@@ -20,15 +22,24 @@ public class ClientMessenger: Messenger {
     var connection: Connection?
     var serviceBrowser: TibeiServiceBrowser
     
+    /**
+     Default initializer.
+     
+     Note that after this call, the `ClientMessenger` instance won't be browsing for services yet.
+     
+     - SeeAlso: ```browseForServices(withIdentifier:)```
+    */
     public init() {
         self.serviceBrowser = TibeiServiceBrowser()
         
         self.serviceBrowser.delegate = self
     }
     
-    /// Browses for services that are currently being published via Bonjour with a certain service identifier.
-    ///
-    /// - Parameter serviceIdentifier: Service identifier being currently browsed for
+    /**
+     Browses for services that are currently being published via Bonjour with a certain service identifier.
+     
+     - Parameter serviceIdentifier: Service identifier being currently browsed for
+     */
     public func browseForServices(withIdentifier serviceIdentifier: String) {
         if self.serviceBrowser.isBrowsing {
             if !self.services.isEmpty {
