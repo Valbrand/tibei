@@ -148,13 +148,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ResponderChain.swift",
-      "line": 63,
-      "symbol": "ResponderChain",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
       "line": 11,
       "symbol": "ConnectionError",

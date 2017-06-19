@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Tibei Docs</a> (23% documented)</p>
+        <p><a href="index.html">Tibei Docs</a> (25% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -101,8 +101,28 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>In Tibei, incoming messages are processed by a chain of objects that may be set as responders in a chain. Responders must conform to the <code><a href="Protocols/ConnectionResponder.html">ConnectionResponder</a></code> or <code><a href="Protocols/ClientConnectionResponder.html">ClientConnectionResponder</a></code> protocols.</p>
 
+<p>Currently, you have to manage the order in which elements are added to the chain, so take care if this is any relevant.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="Protocols/ConnectionResponder.html">ConnectionResponder</a></code>
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="Protocols/ClientConnectionResponder.html">ClientConnectionResponder</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ResponderChain</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
