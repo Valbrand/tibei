@@ -10,8 +10,6 @@ import UIKit
 
 /**
  Represents a messenger that sends and receives messages from the client-side.
-
- After a connection takes place, it will represent the connection.
 */
 public class ClientMessenger: Messenger {
     var services: [String:NetService] = [:]
@@ -62,8 +60,8 @@ public class ClientMessenger: Messenger {
     ///
     /// - Parameter serviceName: The name of the service to connect to
     /// - Throws: `ConnectionError.inexistentService` if the `serviceName` parameter is provided, and `ConnectionError.connectionFailure` if some error occurred while obtaining input stream from connection
-    public func connect(serviceName: String) throws {
-        guard let service = self.services[serviceName] else {
+    public func connect(serviceIdentifier: String) throws {
+        guard let service = self.services[serviceIdentifier] else {
             throw ConnectionError.inexistentService
         }
         

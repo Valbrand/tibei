@@ -14,7 +14,7 @@
     <a title="ConnectionError Enum Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Tibei Docs</a> (25% documented)</p>
+        <p><a href="../index.html">Tibei Docs</a> (54% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -83,7 +83,13 @@
         <section>
           <section class="section">
             <h1>ConnectionError</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ConnectionError</span><span class="p">:</span> <span class="kt">Error</span></code></pre>
+
+                </div>
+              </div>
+            <p>An error that may occur at any point of the connection&rsquo;s lifecycle.</p>
 
           </section>
           <section class="section task-group-section">
@@ -102,8 +108,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Thrown if the <code>OutputStream</code> of a <code><a href="../Classes/Connection.html">Connection</a></code> can&rsquo;t take any more data.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">inputUnavailable</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -125,8 +139,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Thrown if a responder receives a message with a <code>_type</code> field that is not valid (i.e. is not a string).</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">invalidMessageType</span><span class="p">([</span><span class="kt">String</span><span class="p">:</span><span class="kt">Any</span><span class="p">])</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -148,8 +170,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Thrown if an error occurs while reading from a <code><a href="../Classes/Connection.html">Connection</a></code>&lsquo;s <code>InputStream</code>.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">inputError</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -171,8 +201,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Thrown if an error occurs while writing to a <code><a href="../Classes/Connection.html">Connection</a></code>&lsquo;s <code>OutputStream</code>.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">outputError</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -194,8 +232,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Thrown if a <code><a href="../Classes/Connection.html">Connection</a></code>&lsquo;s output stream has no space left.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">outputStreamUnavailable</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -217,8 +263,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Thrown if an attempt to send a message is made without an active <code><a href="../Classes/Connection.html">Connection</a></code>.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">notConnected</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -240,8 +294,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Thrown if an attempt to connect to a service that doesn&rsquo;t exists is made.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">inexistentService</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -263,8 +325,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Thrown if an error occurred while trying to obtain a <code><a href="../Classes/Connection.html">Connection</a></code>&lsquo;s input and output streams.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">connectionFailure</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -274,7 +344,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/valbrand/Tibei" target="_blank" rel="external">Valbrand</a>. All rights reserved. (Last updated: 2017-06-19)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/valbrand/Tibei" target="_blank" rel="external">Valbrand</a>. All rights reserved. (Last updated: 2017-06-23)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

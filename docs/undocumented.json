@@ -148,69 +148,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
-      "line": 11,
-      "symbol": "ConnectionError",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
-      "line": 12,
-      "symbol": "ConnectionError.inputUnavailable",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
-      "line": 13,
-      "symbol": "ConnectionError.invalidMessageType",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
-      "line": 14,
-      "symbol": "ConnectionError.inputError",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
-      "line": 16,
-      "symbol": "ConnectionError.outputError",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
-      "line": 17,
-      "symbol": "ConnectionError.outputStreamUnavailable",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
-      "line": 18,
-      "symbol": "ConnectionError.notConnected",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
-      "line": 20,
-      "symbol": "ConnectionError.inexistentService",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionError.swift",
-      "line": 21,
-      "symbol": "ConnectionError.connectionFailure",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionID.swift",
       "line": 11,
       "symbol": "ConnectionID",
@@ -235,55 +172,6 @@
       "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/message/JSONConvertibleMessage.swift",
       "line": 14,
       "symbol": "JSONConvertibleMessage.toJSONObject()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/server/ServerMessenger.swift",
-      "line": 11,
-      "symbol": "ServerMessenger",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/server/ServerMessenger.swift",
-      "line": 14,
-      "symbol": "ServerMessenger.responders",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/server/ServerMessenger.swift",
-      "line": 17,
-      "symbol": "ServerMessenger.init(serviceIdentifier:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/server/ServerMessenger.swift",
-      "line": 21,
-      "symbol": "ServerMessenger.publishService()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/server/ServerMessenger.swift",
-      "line": 25,
-      "symbol": "ServerMessenger.unpublishService()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/server/ServerMessenger.swift",
-      "line": 36,
-      "symbol": "ServerMessenger.sendMessage(_:toConnectionWithID:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/server/ServerMessenger.swift",
-      "line": 44,
-      "symbol": "ServerMessenger.broadcastMessage(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
