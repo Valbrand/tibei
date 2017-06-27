@@ -1,34 +1,6 @@
 {
   "warnings": [
     {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/client/responderChain/ClientConnectionResponder.swift",
-      "line": null,
-      "symbol": "ClientConnectionResponder",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/client/responderChain/ClientConnectionResponder.swift",
-      "line": 11,
-      "symbol": "ClientConnectionResponder",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/client/responderChain/ClientConnectionResponder.swift",
-      "line": 12,
-      "symbol": "ClientConnectionResponder.availableServicesChanged(availableServiceIDs:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/client/responderChain/ClientConnectionResponder.swift",
-      "line": 16,
-      "symbol": "ClientConnectionResponder.availableServicesChanged(availableServiceIDs:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/Messenger.swift",
       "line": null,
       "symbol": "Messenger",
