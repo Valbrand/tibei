@@ -14,7 +14,7 @@
     <a title="ConnectionResponder Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Tibei Docs</a> (76% documented)</p>
+        <p><a href="../index.html">Tibei Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -73,7 +73,7 @@
             <a href="../Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Structs/ConnectionID.html">ConnectionID</a>
+                <a href="../Structs.html#/s:V5Tibei12ConnectionID">ConnectionID</a>
               </li>
             </ul>
           </li>
@@ -83,7 +83,13 @@
         <section>
           <section class="section">
             <h1>ConnectionResponder</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ConnectionResponder</span><span class="p">:</span> <span class="kd">class</span></code></pre>
+
+                </div>
+              </div>
+            <p>Represents an entity that responds to received messages. It can explicitly state which types of messages it expects, and will only be prompted to process a message if appropriated.</p>
 
           </section>
           <section class="section task-group-section">
@@ -105,13 +111,21 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>An array of types representing the messages it wants to receive.</p>
 
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p>Undocumented</p>
+                        <p>An empty array. Note that this will cause the responder not to receive any messages. You have to explicitly state the messages that your responder will handle.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">allowedMessages</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/JSONConvertibleMessage.html">JSONConvertibleMessage</a></span><span class="o">.</span><span class="k">Type</span><span class="p">]</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -123,22 +137,53 @@
                     <a name="//apple_ref/swift/Method/processMessage(_:fromConnectionWithID:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:FP5Tibei19ConnectionResponder14processMessageFTPS_22JSONConvertibleMessage_20fromConnectionWithIDVS_12ConnectionID_T_">processMessage(_:fromConnectionWithID:)</a>
                     </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Processes a message that was received through an active connection.</p>
 
                       </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        <p>Undocumented</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">processMessage</span><span class="p">(</span><span class="n">_</span> <span class="nv">message</span><span class="p">:</span> <span class="kt"><a href="../Protocols/JSONConvertibleMessage.html">JSONConvertibleMessage</a></span><span class="p">,</span> <span class="n">fromConnectionWithID</span> <span class="nv">connectionID</span><span class="p">:</span> <span class="kt"><a href="../Structs.html#/s:V5Tibei12ConnectionID">ConnectionID</a></span><span class="p">)</span></code></pre>
 
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>message</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The message received through the connection</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>connectionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier of the connection that received the message</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -150,22 +195,41 @@
                     <a name="//apple_ref/swift/Method/acceptedConnection(withID:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:FP5Tibei19ConnectionResponder18acceptedConnectionFT6withIDVS_12ConnectionID_T_">acceptedConnection(withID:)</a>
                     </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Notifies the responder that a connection has been accepted</p>
 
                       </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        <p>Undocumented</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">acceptedConnection</span><span class="p">(</span><span class="n">withID</span> <span class="nv">connectionID</span><span class="p">:</span> <span class="kt"><a href="../Structs.html#/s:V5Tibei12ConnectionID">ConnectionID</a></span><span class="p">)</span></code></pre>
 
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>connectionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier of the accepted connection</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -177,22 +241,41 @@
                     <a name="//apple_ref/swift/Method/lostConnection(withID:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:FP5Tibei19ConnectionResponder14lostConnectionFT6withIDVS_12ConnectionID_T_">lostConnection(withID:)</a>
                     </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Notifies the responder that a connection has been lost</p>
 
                       </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        <p>Undocumented</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">lostConnection</span><span class="p">(</span><span class="n">withID</span> <span class="nv">connectionID</span><span class="p">:</span> <span class="kt"><a href="../Structs.html#/s:V5Tibei12ConnectionID">ConnectionID</a></span><span class="p">)</span></code></pre>
 
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>connectionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier of the lost connection</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -204,22 +287,53 @@
                     <a name="//apple_ref/swift/Method/processError(_:fromConnectionWithID:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:FP5Tibei19ConnectionResponder12processErrorFTPs5Error_20fromConnectionWithIDGSqVS_12ConnectionID__T_">processError(_:fromConnectionWithID:)</a>
                     </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Processes an error that occurred while handling an active connection</p>
 
                       </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        <p>Undocumented</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">processError</span><span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">,</span> <span class="n">fromConnectionWithID</span> <span class="nv">connectionID</span><span class="p">:</span> <span class="kt"><a href="../Structs.html#/s:V5Tibei12ConnectionID">ConnectionID</a></span><span class="p">?)</span></code></pre>
 
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>connectionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier of the connection that raised the error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

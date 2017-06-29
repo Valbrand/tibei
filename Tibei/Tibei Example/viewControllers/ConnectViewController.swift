@@ -59,7 +59,7 @@ class ConnectViewController: UIViewController {
 extension ConnectViewController: ClientConnectionResponder {
     func availableServicesChanged(availableServiceIDs: [String]) {
         do {
-            try self.client.connect(serviceName: availableServiceIDs.first!)
+            try self.client.connect(serviceIdentifier: availableServiceIDs.first!)
         } catch {
             print("An error occurred while trying to connect")
             print(error)
