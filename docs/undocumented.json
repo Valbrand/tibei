@@ -1,131 +1,96 @@
 {
   "warnings": [
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/Messenger.swift",
-      "line": null,
-      "symbol": "Messenger",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/Messenger.swift",
-      "line": 11,
-      "symbol": "Messenger",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/Messenger.swift",
-      "line": 12,
-      "symbol": "Messenger.responders",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/Messenger.swift",
-      "line": 16,
-      "symbol": "Messenger.registerResponder(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/Messenger.swift",
-      "line": 20,
-      "symbol": "Messenger.unregisterResponder(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": null,
       "symbol": "ConnectionResponder",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 9,
       "symbol": "ConnectionResponder",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 10,
       "symbol": "ConnectionResponder.allowedMessages",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 12,
       "symbol": "ConnectionResponder.processMessage(_:fromConnectionWithID:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 13,
       "symbol": "ConnectionResponder.acceptedConnection(withID:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 14,
       "symbol": "ConnectionResponder.lostConnection(withID:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 15,
       "symbol": "ConnectionResponder.processError(_:fromConnectionWithID:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 19,
       "symbol": "ConnectionResponder.allowedMessages",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 23,
       "symbol": "ConnectionResponder.processMessage(_:fromConnectionWithID:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 26,
       "symbol": "ConnectionResponder.acceptedConnection(withID:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 29,
       "symbol": "ConnectionResponder.lostConnection(withID:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/common/responderChain/ConnectionResponder.swift",
       "line": 32,
       "symbol": "ConnectionResponder.processError(_:fromConnectionWithID:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/valbrand/Documents/code/swift/Tibei/Sources/Tibei/connection/ConnectionID.swift",
+      "file": "/Users/valbrand/Documents/projects/swift/tibei/Sources/Tibei/connection/ConnectionID.swift",
       "line": 11,
       "symbol": "ConnectionID",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/valbrand/Documents/code/swift/Tibei"
+  "source_directory": "/Users/valbrand/Documents/projects/swift/tibei"
 }

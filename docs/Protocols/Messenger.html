@@ -14,7 +14,7 @@
     <a title="Messenger Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Tibei Docs</a> (67% documented)</p>
+        <p><a href="../index.html">Tibei Docs</a> (76% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -83,7 +83,13 @@
         <section>
           <section class="section">
             <h1>Messenger</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Messenger</span></code></pre>
+
+                </div>
+              </div>
+            <p>Represents an entity that receives messages from a connection. This protocol is implemented by both <code><a href="../Classes/ClientMessenger.html">ClientMessenger</a></code> and <code><a href="../Classes/ServerMessenger.html">ServerMessenger</a></code>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -102,8 +108,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The chain of registered message responders</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">responders</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:C5Tibei14ResponderChain">ResponderChain</a></span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -128,8 +142,35 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Registers a new responder to the responder chain.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerResponder</span><span class="p">(</span><span class="n">_</span> <span class="nv">responder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ConnectionResponder.html">ConnectionResponder</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>responder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the <code>ConnectionResponder</code> to be registered to the chain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -150,8 +191,35 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Removes a responder from the responder chain.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">unregisterResponder</span><span class="p">(</span><span class="n">_</span> <span class="nv">responder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ConnectionResponder.html">ConnectionResponder</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>responder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the <code>ConnectionResponder</code> to be removed from the chain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -161,7 +229,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/valbrand/Tibei" target="_blank" rel="external">Valbrand</a>. All rights reserved. (Last updated: 2017-06-27)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/valbrand/Tibei" target="_blank" rel="external">Valbrand</a>. All rights reserved. (Last updated: 2017-06-29)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
