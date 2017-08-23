@@ -60,6 +60,14 @@ class ResponderChainNode {
     }
 }
 
+/**
+ In Tibei, incoming messages are processed by a chain of objects that may be set as responders in a chain. Responders must conform to the `ConnectionResponder` or `ClientConnectionResponder` protocols.
+ 
+ Currently, you have to manage the order in which elements are added to the chain, so take care if this is any relevant.
+ 
+ - SeeAlso: `ConnectionResponder`
+ - SeeAlso: `ClientConnectionResponder`
+ */
 public class ResponderChain {
     var head: ResponderChainNode?
     var tail: ResponderChainNode?
