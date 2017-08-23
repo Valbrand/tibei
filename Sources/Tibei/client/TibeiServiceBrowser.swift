@@ -8,14 +8,14 @@
 
 import UIKit
 
-class GameControllerServiceBrowser: NSObject {
+class TibeiServiceBrowser: NSObject {
     let serviceBrowser: NetServiceBrowser = NetServiceBrowser()
     
     var inputStream: InputStream?
     var outputStream: OutputStream?
     
     var isBrowsing: Bool = false
-    var delegate: GameControllerServiceBrowserDelegate?
+    var delegate: TibeiServiceBrowserDelegate?
 
     override init() {
         super.init()
@@ -33,7 +33,7 @@ class GameControllerServiceBrowser: NSObject {
     }
 }
 
-extension GameControllerServiceBrowser: NetServiceBrowserDelegate {
+extension TibeiServiceBrowser: NetServiceBrowserDelegate {
     func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
         self.isBrowsing = true
     }

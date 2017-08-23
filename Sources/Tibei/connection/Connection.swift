@@ -8,8 +8,12 @@
 
 import UIKit
 
+/**
+ Represents a single connection between server and client. The same class is used on either side.
+ */
 public class Connection: NSObject, StreamDelegate {
     let outwardMessagesQueue: OperationQueue = OperationQueue()
+    /// An unique identifier for the connection
     public let identifier: ConnectionID
     
     var input: InputStream
@@ -21,6 +25,7 @@ public class Connection: NSObject, StreamDelegate {
     }
     var isReady: Bool = false
     var pingTimer = Timer()
+    /// :nodoc:
     override public var hashValue: Int {
         return self.identifier.id.hashValue
     }
@@ -132,6 +137,7 @@ public class Connection: NSObject, StreamDelegate {
     
     // MARK: - StreamDelegate protocol
     
+    /// :nodoc:
     public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case Stream.Event.errorOccurred:

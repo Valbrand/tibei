@@ -8,20 +8,38 @@
 
 import Foundation
 
+/**
+ Represents a messenger that sends and receives messages on the server side.
+ */
 public class ServerMessenger: Messenger {
     var connections: [ConnectionID: Connection] = [:]
     
+    /**
+     The current responder chain
+     */
     public var responders: ResponderChain = ResponderChain()
-    var gameControllerServer: GameControllerServer!
+    var gameControllerServer: TibeiServer!
     
+    /**
+     Initializes the messenger. The service will **not** be published through Bonjour until `publishService` is called.
+     
+     - Parameter serviceIdentifier: The string that will distinguish this service from others in the Bonjour discovery process
+     */
     public init(serviceIdentifier: String) {
-        self.gameControllerServer = GameControllerServer(messenger: self, serviceIdentifier: serviceIdentifier)
+        self.gameControllerServer = TibeiServer(messenger: self, serviceIdentifier: serviceIdentifier)
     }
     
+    
+    /**
+     Publishes the service through Bonjour, making it discoverable to any client that searches for this server's service identifier
+     */
     public func publishService() {
         self.gameControllerServer.publishService()
     }
     
+    /**
+     Make this server's service undiscoverable. No clients will be able to connect from the moment this method is called.
+     */
     public func unpublishService() {
         self.gameControllerServer.unpublishService()
     }
@@ -33,7 +51,14 @@ public class ServerMessenger: Messenger {
         connection.open()
     }
     
-    public func sendMessage<Message: JSONConvertibleMessage>(_ message: Message, toConnectionWithID connectionID: ConnectionID) throws {
+    /**
+     Sends a message to a client identified by its connection identifier.
+     
+     - Parameters:
+        - message: The message to be sent
+        - connectionID: The identifier of the connection through which the message should be sent
+     */
+    public func sendMessage<Message: JSONConvertibleMessage>(_ message: Message, toConnectionWithID connectionID: ConnectionID) {
         guard let connection = self.connections[connectionID] else {
             return
         }
@@ -41,6 +66,11 @@ public class ServerMessenger: Messenger {
         connection.sendMessage(message)
     }
     
+    /**
+     Sends a message to all active connections.
+     
+     - Parameter message: The message to be sent
+     */
     public func broadcastMessage<Message: JSONConvertibleMessage>(_ message: Message){
         for (_, connection) in self.connections{
             connection.sendMessage(message)

@@ -20,10 +20,10 @@
 		F3C8628E1E27B23C004070B2 /* Tibei-tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F3C862801E27B23C004070B2 /* Tibei-tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3C862B81E27BCA3004070B2 /* ClientMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862981E27BCA3004070B2 /* ClientMessenger.swift */; };
 		F3C862B91E27BCA3004070B2 /* ClientMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862981E27BCA3004070B2 /* ClientMessenger.swift */; };
-		F3C862BA1E27BCA3004070B2 /* GameControllerServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862991E27BCA3004070B2 /* GameControllerServiceBrowser.swift */; };
-		F3C862BB1E27BCA3004070B2 /* GameControllerServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862991E27BCA3004070B2 /* GameControllerServiceBrowser.swift */; };
-		F3C862BC1E27BCA3004070B2 /* GameControllerServiceBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8629A1E27BCA3004070B2 /* GameControllerServiceBrowserDelegate.swift */; };
-		F3C862BD1E27BCA3004070B2 /* GameControllerServiceBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8629A1E27BCA3004070B2 /* GameControllerServiceBrowserDelegate.swift */; };
+		F3C862BA1E27BCA3004070B2 /* TibeiServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862991E27BCA3004070B2 /* TibeiServiceBrowser.swift */; };
+		F3C862BB1E27BCA3004070B2 /* TibeiServiceBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862991E27BCA3004070B2 /* TibeiServiceBrowser.swift */; };
+		F3C862BC1E27BCA3004070B2 /* TibeiServiceBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8629A1E27BCA3004070B2 /* TibeiServiceBrowserDelegate.swift */; };
+		F3C862BD1E27BCA3004070B2 /* TibeiServiceBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8629A1E27BCA3004070B2 /* TibeiServiceBrowserDelegate.swift */; };
 		F3C862BE1E27BCA3004070B2 /* ClientConnectionResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8629C1E27BCA3004070B2 /* ClientConnectionResponder.swift */; };
 		F3C862BF1E27BCA3004070B2 /* ClientConnectionResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8629C1E27BCA3004070B2 /* ClientConnectionResponder.swift */; };
 		F3C862C01E27BCA3004070B2 /* ClientResponderChainNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8629D1E27BCA3004070B2 /* ClientResponderChainNode.swift */; };
@@ -60,8 +60,8 @@
 		F3C862DF1E27BCA3004070B2 /* JSONConvertibleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B21E27BCA3004070B2 /* JSONConvertibleMessage.swift */; };
 		F3C862E01E27BCA3004070B2 /* KeepAliveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B31E27BCA3004070B2 /* KeepAliveMessage.swift */; };
 		F3C862E11E27BCA3004070B2 /* KeepAliveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B31E27BCA3004070B2 /* KeepAliveMessage.swift */; };
-		F3C862E21E27BCA3004070B2 /* GameControllerServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B51E27BCA3004070B2 /* GameControllerServer.swift */; };
-		F3C862E31E27BCA3004070B2 /* GameControllerServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B51E27BCA3004070B2 /* GameControllerServer.swift */; };
+		F3C862E21E27BCA3004070B2 /* TibeiServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B51E27BCA3004070B2 /* TibeiServer.swift */; };
+		F3C862E31E27BCA3004070B2 /* TibeiServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B51E27BCA3004070B2 /* TibeiServer.swift */; };
 		F3C862E41E27BCA3004070B2 /* ServerMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B61E27BCA3004070B2 /* ServerMessenger.swift */; };
 		F3C862E51E27BCA3004070B2 /* ServerMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B61E27BCA3004070B2 /* ServerMessenger.swift */; };
 		F3C862E61E27BCA3004070B2 /* StreamExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C862B71E27BCA3004070B2 /* StreamExtensions.swift */; };
@@ -145,8 +145,8 @@
 		F3C8628B1E27B23C004070B2 /* Tibei_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tibei_tvOSTests.swift; sourceTree = "<group>"; };
 		F3C8628D1E27B23C004070B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3C862981E27BCA3004070B2 /* ClientMessenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientMessenger.swift; sourceTree = "<group>"; };
-		F3C862991E27BCA3004070B2 /* GameControllerServiceBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameControllerServiceBrowser.swift; sourceTree = "<group>"; };
-		F3C8629A1E27BCA3004070B2 /* GameControllerServiceBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameControllerServiceBrowserDelegate.swift; sourceTree = "<group>"; };
+		F3C862991E27BCA3004070B2 /* TibeiServiceBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TibeiServiceBrowser.swift; sourceTree = "<group>"; };
+		F3C8629A1E27BCA3004070B2 /* TibeiServiceBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TibeiServiceBrowserDelegate.swift; sourceTree = "<group>"; };
 		F3C8629C1E27BCA3004070B2 /* ClientConnectionResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientConnectionResponder.swift; sourceTree = "<group>"; };
 		F3C8629D1E27BCA3004070B2 /* ClientResponderChainNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientResponderChainNode.swift; sourceTree = "<group>"; };
 		F3C8629F1E27BCA3004070B2 /* ServiceAvailabilityChangeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAvailabilityChangeEvent.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		F3C862B11E27BCA3004070B2 /* IncomingMessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingMessageData.swift; sourceTree = "<group>"; };
 		F3C862B21E27BCA3004070B2 /* JSONConvertibleMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConvertibleMessage.swift; sourceTree = "<group>"; };
 		F3C862B31E27BCA3004070B2 /* KeepAliveMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepAliveMessage.swift; sourceTree = "<group>"; };
-		F3C862B51E27BCA3004070B2 /* GameControllerServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameControllerServer.swift; sourceTree = "<group>"; };
+		F3C862B51E27BCA3004070B2 /* TibeiServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TibeiServer.swift; sourceTree = "<group>"; };
 		F3C862B61E27BCA3004070B2 /* ServerMessenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerMessenger.swift; sourceTree = "<group>"; };
 		F3C862B71E27BCA3004070B2 /* StreamExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamExtensions.swift; sourceTree = "<group>"; };
 		F3C862E81E27BFC5004070B2 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
@@ -343,8 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				F3C862981E27BCA3004070B2 /* ClientMessenger.swift */,
-				F3C862991E27BCA3004070B2 /* GameControllerServiceBrowser.swift */,
-				F3C8629A1E27BCA3004070B2 /* GameControllerServiceBrowserDelegate.swift */,
+				F3C862991E27BCA3004070B2 /* TibeiServiceBrowser.swift */,
+				F3C8629A1E27BCA3004070B2 /* TibeiServiceBrowserDelegate.swift */,
 				F3C8629B1E27BCA3004070B2 /* responderChain */,
 			);
 			path = client;
@@ -423,7 +423,7 @@
 		F3C862B41E27BCA3004070B2 /* server */ = {
 			isa = PBXGroup;
 			children = (
-				F3C862B51E27BCA3004070B2 /* GameControllerServer.swift */,
+				F3C862B51E27BCA3004070B2 /* TibeiServer.swift */,
 				F3C862B61E27BCA3004070B2 /* ServerMessenger.swift */,
 			);
 			path = server;
@@ -840,7 +840,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C862CE1E27BCA3004070B2 /* ConnectionLostEvent.swift in Sources */,
-				F3C862BC1E27BCA3004070B2 /* GameControllerServiceBrowserDelegate.swift in Sources */,
+				F3C862BC1E27BCA3004070B2 /* TibeiServiceBrowserDelegate.swift in Sources */,
 				F3C862D21E27BCA3004070B2 /* ResponderChain.swift in Sources */,
 				F3C862E41E27BCA3004070B2 /* ServerMessenger.swift in Sources */,
 				F3C862E01E27BCA3004070B2 /* KeepAliveMessage.swift in Sources */,
@@ -854,10 +854,10 @@
 				F3C862D41E27BCA3004070B2 /* Connection.swift in Sources */,
 				F3C862C61E27BCA3004070B2 /* Messenger.swift in Sources */,
 				F3C862DE1E27BCA3004070B2 /* JSONConvertibleMessage.swift in Sources */,
-				F3C862BA1E27BCA3004070B2 /* GameControllerServiceBrowser.swift in Sources */,
+				F3C862BA1E27BCA3004070B2 /* TibeiServiceBrowser.swift in Sources */,
 				F3C862C41E27BCA3004070B2 /* Constants.swift in Sources */,
 				F3C862B81E27BCA3004070B2 /* ClientMessenger.swift in Sources */,
-				F3C862E21E27BCA3004070B2 /* GameControllerServer.swift in Sources */,
+				F3C862E21E27BCA3004070B2 /* TibeiServer.swift in Sources */,
 				F3C862BE1E27BCA3004070B2 /* ClientConnectionResponder.swift in Sources */,
 				F3C862D81E27BCA3004070B2 /* ConnectionError.swift in Sources */,
 				F3C862CA1E27BCA3004070B2 /* ConnectionAcceptedEvent.swift in Sources */,
@@ -879,7 +879,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C862CF1E27BCA3004070B2 /* ConnectionLostEvent.swift in Sources */,
-				F3C862BD1E27BCA3004070B2 /* GameControllerServiceBrowserDelegate.swift in Sources */,
+				F3C862BD1E27BCA3004070B2 /* TibeiServiceBrowserDelegate.swift in Sources */,
 				F3C862D31E27BCA3004070B2 /* ResponderChain.swift in Sources */,
 				F3C862E51E27BCA3004070B2 /* ServerMessenger.swift in Sources */,
 				F3C862E11E27BCA3004070B2 /* KeepAliveMessage.swift in Sources */,
@@ -893,10 +893,10 @@
 				F3C862D51E27BCA3004070B2 /* Connection.swift in Sources */,
 				F3C862C71E27BCA3004070B2 /* Messenger.swift in Sources */,
 				F3C862DF1E27BCA3004070B2 /* JSONConvertibleMessage.swift in Sources */,
-				F3C862BB1E27BCA3004070B2 /* GameControllerServiceBrowser.swift in Sources */,
+				F3C862BB1E27BCA3004070B2 /* TibeiServiceBrowser.swift in Sources */,
 				F3C862C51E27BCA3004070B2 /* Constants.swift in Sources */,
 				F3C862B91E27BCA3004070B2 /* ClientMessenger.swift in Sources */,
-				F3C862E31E27BCA3004070B2 /* GameControllerServer.swift in Sources */,
+				F3C862E31E27BCA3004070B2 /* TibeiServer.swift in Sources */,
 				F3C862BF1E27BCA3004070B2 /* ClientConnectionResponder.swift in Sources */,
 				F3C862D91E27BCA3004070B2 /* ConnectionError.swift in Sources */,
 				F3C862CB1E27BCA3004070B2 /* ConnectionAcceptedEvent.swift in Sources */,

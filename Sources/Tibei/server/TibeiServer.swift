@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class GameControllerServer: NSObject, NetServiceDelegate {
+class TibeiServer: NSObject, NetServiceDelegate {
     let deviceName: String = UIDevice.current.name
     
     let service: NetService
@@ -19,7 +19,11 @@ class GameControllerServer: NSObject, NetServiceDelegate {
     init(messenger: ServerMessenger, serviceIdentifier: String) {
         self.messenger = messenger
         
-        let serviceType = "\(serviceIdentifier)._tcp"
+        var serviceType = "\(serviceIdentifier)._tcp"
+        
+        if !serviceType.hasPrefix("_") {
+            serviceType = "_\(serviceType)"
+        }
         
         self.service = NetService(domain: "local", type: serviceType, name: self.deviceName)
         
