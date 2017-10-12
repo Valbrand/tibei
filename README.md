@@ -5,11 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/Tibei.svg?style=flat)](http://cocoapods.org/pods/Tibei)
 [![Platform](https://img.shields.io/cocoapods/p/Tibei.svg?style=flat)](http://cocoapods.org/pods/Tibei)
 
-## Example
+## Getting started
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the sample application, you just have to clone/download this repository and run the `Tibei Example` target through xCode.
 
 ## Requirements
+
+Tibei has no dependencies. It uses `NetService` from `Foundation` internally to discover and connect to peers.
 
 ## Installation
 
