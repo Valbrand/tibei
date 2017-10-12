@@ -22,6 +22,50 @@ it, simply add the following line to your Podfile:
 pod "Tibei"
 ```
 
+## Usage
+
+Now you'll find a tutorial on how to actually use Tibei in your project. I'll try to keep it as short as possible, and in case you need to see things actually working, the sample application should suffice.
+
+### Discovering services and connecting to them
+
+Tibei relies on the concept of having one or more devices acting as a Server, listening to connection requests and connecting to them directly in case it accepts said requests. Servers can also be clients simultaneously.
+
+Creating a server is as simple as creating an instance of the `ServerMessenger` class and calling its `publishService` method:
+
+```swift
+self.server = ServerMessenger(serviceIdentifier: "myAppName")
+self.server.publishService()
+```
+
+The `serviceIdentifier` argument serves as a means to make your app's service distinguishable from other applications and devices that may also be using Bonjour nearby.
+
+Given a device has started a server nearby, a client can discover its existence by creating an instance of `ClientMessenger` and browsing for services:
+
+```swift
+//...
+self.client = ClientMessenger()
+self.client.registerResponder(self)
+self.client.browseForServices(withIdentifier: "myAppName")
+//...
+```
+
+This will make the client start looking for services with the given identifier. Whenever the list of available services with the identifier `"myAppName"` changes, the `ClientMessenger` instance will call the method `availableServicesChanged(availableServiceIds:)` on its responder (hence the second line in the previous sample). An example that connects to the first service the client manages to find follows below:
+
+```swift
+extension ViewController: ConnectionResponder {
+  func availableServicesChanged(availableServiceIDs: [String]) {
+    do {
+      try self.client.connect(serviceIdentifier: availableServiceIDs.first!)
+    } catch {
+      print("An error occurred while trying to connect")
+      print(error)
+    }
+  }
+}
+```
+
+The `ConnectionResponder` protocol has several other lifecycle methods that can be seen in the sample application and in the [docs](http://www.dvalbrand.com/tibei).
+
 ## Author
 
 Daniel Oliveira, dvalbrand@gmail.com
