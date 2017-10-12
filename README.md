@@ -1,3 +1,18 @@
+Table of Contents
+=================
+
+* [Tibei](#tibei)
+  * [Getting started](#getting-started)
+  * [Requirements](#requirements)
+  * [Installation](#installation)
+  * [Usage](#usage)
+    * [Discovering services and connecting to them](#discovering-services-and-connecting-to-them)
+    * [Sending and receiving messages](#sending-and-receiving-messages)
+  * [Author](#author)
+  * [License](#license)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+
 # Tibei
 
 [![CI Status](http://img.shields.io/travis/Valbrand/Tibei.svg?style=flat)](https://travis-ci.org/Valbrand/Tibei)
