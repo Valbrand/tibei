@@ -66,6 +66,12 @@ extension ViewController: ConnectionResponder {
 
 The `ConnectionResponder` protocol has several other lifecycle methods that can be seen in the sample application and in the [docs](http://www.dvalbrand.com/tibei).
 
+### Sending and receiving messages
+
+Clients can only send messages directly to the server they're connected to. Messages are encoded in JSON format before being sent, and should conform to the [`JSONConvertibleMessage`](http://www.dvalbrand.com/tibei/Protocols/JSONConvertibleMessage.html) protocol. Clients can send messages using the `sendMessage(_:)` method.
+
+Servers can send messages to any of the clients connected to them. In order to identify them, each `Connection` is given a `ConnectionID` upon creation. It should be passed on to the `sendMessage(_:toConnectionWithID:)` method in order to have it send to the correct peer.
+
 ## Author
 
 Daniel Oliveira, dvalbrand@gmail.com
