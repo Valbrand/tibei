@@ -1,6 +1,8 @@
+<img src="logo.png" width=150px style="float:right" alt="Logo" />
+
 # Tibei
 
-[![CI Status](http://img.shields.io/travis/Daniel Oliveira/Tibei.svg?style=flat)](https://travis-ci.org/Daniel Oliveira/Tibei)
+[![CI Status](http://img.shields.io/travis/Valbrand/Tibei.svg?style=flat)](https://travis-ci.org/Valbrand/Tibei)
 [![Version](https://img.shields.io/cocoapods/v/Tibei.svg?style=flat)](http://cocoapods.org/pods/Tibei)
 [![License](https://img.shields.io/cocoapods/l/Tibei.svg?style=flat)](http://cocoapods.org/pods/Tibei)
 [![Platform](https://img.shields.io/cocoapods/p/Tibei.svg?style=flat)](http://cocoapods.org/pods/Tibei)
